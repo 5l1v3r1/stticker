@@ -161,6 +161,7 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Webjektif\LaravelConfig\LaravelConfigServiceProvider::class,
 
     ],
 
@@ -209,7 +210,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
-        'Alert'     => UxWeb\SweetAlert\SweetAlert::class
+        'Alert'     => UxWeb\SweetAlert\SweetAlert::class,
+        'Settings'  => Webjektif\LaravelConfig\LaravelConfigFacade::class,
 
     ],
 
