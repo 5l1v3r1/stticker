@@ -1,0 +1,33 @@
+{
+  "name": "stticker",
+  "description": "Stticker Project",
+  "main": "gulpfile.js",
+  "authors": [
+    "Eray AYDIN <eray@webjektif.com>",
+    "Tuva Yasin ERGUN <tuva@webjektif.com>",
+    "Vedat Furkan Erkul <vedat@webjektif.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "stticker",
+    "sticker"
+  ],
+  "homepage": "https://github.com/webjektiff/stticker",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.2",
+    "tether": "~1.1.1",
+    "sweetalert": "~1.1.3",
+    "font-awesome": "~4.5.0",
+    "owl.carousel": "~2.0.0-beta.3",
+    "html5shiv": "~3.7.3",
+    "respond": "~1.4.2"
+  }
+}
