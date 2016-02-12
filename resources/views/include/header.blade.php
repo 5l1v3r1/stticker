@@ -4,7 +4,7 @@
             <div class="col-md-4">
                 <h1 class="logo text-md-left text-lg-left text-sm-center text-xs-center">
                     <a href="#">
-                        <img src="https://laravel.com/assets/img/laravel-logo.png" alt="Stticker"> Stticker
+                        <i class="fa fa-cubes"></i> Stticker
                     </a>
                 </h1>
             </div>
