@@ -1,0 +1,21 @@
+.sticker {
+  display: block;
+  .card-img-overlay {
+    display: none;
+    background: rgba($brand-primary, 0.6);
+    .card-title {
+      color: $color-white;
+      position: absolute;
+      bottom: 0;
+      display: block;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  &:hover {
+    .card-img-overlay {
+      display: block;
+    }
+  }
+}

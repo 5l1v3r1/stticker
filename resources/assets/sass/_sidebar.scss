@@ -1,0 +1,44 @@
+.sidebar {
+  border-right: 1px solid $gray-lighter;
+  padding: 10px 30px 0 0;
+  > h3 {
+    font-size: $font-size-h4;
+    a {
+      display: block;
+      padding: 10px;
+      border-bottom: 1px dashed $gray-lighter;
+      color:  $gray-dark;
+      &:hover {
+        color: $brand-primary;
+        border-bottom-color: $brand-primary;
+        text-decoration: none;
+      }
+    }
+  }
+  > .nav {
+    margin-bottom: 25px;
+    > .nav-item {
+      > .nav-link {
+        display: block;
+        padding: 5px 7px;
+        &:hover {
+          padding: 5px;
+          border-left: 2px solid $brand-primary;
+        }
+      }
+      > .nav {
+        padding: 3px 0 3px 10px;
+        > .nav-item {
+          > .nav-link {
+            display: block;
+            padding: 4px 6px;
+            &:hover {
+              padding: 4px;
+              border-left: 2px solid $brand-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
