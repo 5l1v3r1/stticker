@@ -13,7 +13,8 @@ elixir(function(mix) {
             './bower_components/sweetalert/dist/sweetalert-dev.js',
             './bower_components/owl.carousel/dist/owl.carousel.js',
             './bower_components/bootstrap-filestyle/src/bootstrap-filestyle.js',
-            './bower_components/select2/dist/js/select2.full.js'
+            './bower_components/select2/dist/js/select2.full.js',
+            './bower_components/typed.js/dist/typed.min.js'
         ], 'public/assets/js/vendor.js')
         .scripts([
             'app.js'

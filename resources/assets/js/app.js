@@ -1,3 +1,13 @@
+$("#brand h2 span").typed({
+    strings: [
+        "En Özel Stickerlar ^1000 ",
+        "En Güzel Stickerlar ^1000 ",
+        "En Canlı Stickerlar ^1000 ",
+        "En Kaliteli Stickerlar ^1000 "
+    ],
+    typeSpeed: 0
+});
+
 $(":file").filestyle({
     input: false,
     buttonText: "Çalışmanız",

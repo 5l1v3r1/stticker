@@ -1,12 +1,12 @@
 @extends("layout.master")
 
 @section("body")
-    <section class="brand">
+    <section class="brand" id="brand">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center">Love beautiful code? We do too.</h2>
-                    <h3 class="text-center">The PHP Framework For Web Artisans</h3>
+                    <h2 class="text-center"><span>En Özel Sttickerlar.</span></h2>
+                    <h3 class="text-center">Yazılım, Teknoloji, Oyun, Dizi, Film, Müzik ve dahası...</h3>
                 </div>
             </div>
         </div>
