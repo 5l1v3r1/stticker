@@ -1,0 +1,21 @@
+footer {
+  background: $gray-lightest;
+
+  .nav-footer > .nav-item {
+    position: relative;
+    > a {
+      color: $gray;
+      padding: 25px 0;
+
+      &:hover {
+        color: $brand-primary;
+      }
+    }
+  }
+
+  h3 {
+    color: $gray-light;
+    font-size: $font-size-xs;
+    padding: 10px 0;
+  }
+}

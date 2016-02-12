@@ -12,7 +12,11 @@
 </head>
 <body>
 
+@include("include.header")
+
 @yield("body")
+
+@include("include.footer")
 
 <script src="{{ asset("assets/js/vendor.js") }}"></script>
 <script src="{{ asset("assets/js/app.js") }}"></script>

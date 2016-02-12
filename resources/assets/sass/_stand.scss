@@ -1,0 +1,23 @@
+.stand {
+  padding: 50px 0;
+  background: url("../images/stand-bg.jpg");
+  h4 {
+    font-size: $font-size-h1;
+    font-weight: 300;
+    line-height: $line-height;
+    color: $color-white;
+  }
+  h5 {
+    font-size: $font-size-h5;
+    font-weight: 300;
+    line-height: $line-height;
+    color: $color-white;
+  }
+  form {
+    margin-top: 20px;
+    color: $color-white;
+    label {
+      margin-bottom: 0;
+    }
+  }
+}

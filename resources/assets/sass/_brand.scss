@@ -1,0 +1,16 @@
+.brand {
+  background: url("../images/brand-bg.png");
+  padding: 75px 0;
+  h2 {
+    color: $gray;
+    font-size: $display4-size;
+    font-weight: $display4-weight;
+    padding: 40px 0;
+  }
+  h3 {
+    font-size: $font-size-h3;
+    color: $gray-light;
+    font-weight: 300;
+    padding: 20px 0;
+  }
+}

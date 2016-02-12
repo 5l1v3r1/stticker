@@ -11,10 +11,13 @@ elixir(function(mix) {
             './bower_components/tether/dist/js/tether.js',
             './bower_components/bootstrap/dist/js/bootstrap.js',
             './bower_components/sweetalert/dist/sweetalert-dev.js',
-            './bower_components/owl.carousel/dist/owl.carousel.js'
+            './bower_components/owl.carousel/dist/owl.carousel.js',
+            './bower_components/bootstrap-filestyle/src/bootstrap-filestyle.js',
+            './bower_components/select2/dist/js/select2.full.js'
         ], 'public/assets/js/vendor.js')
         .scripts([
             'app.js'
         ], 'public/assets/js/app.js')
-        .copy('./bower_components/font-awesome/fonts/*', 'public/assets/fonts');
+        .copy('./bower_components/font-awesome/fonts/', 'public/assets/fonts')
+        .copy('./resources/assets/images/', 'public/assets/images');
 });

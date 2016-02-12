@@ -28,6 +28,8 @@
     "font-awesome": "~4.5.0",
     "owl.carousel": "~2.0.0-beta.3",
     "html5shiv": "~3.7.3",
-    "respond": "~1.4.2"
+    "respond": "~1.4.2",
+    "bootstrap-filestyle": "^1.2.1",
+    "select2": "^4.0.1"
   }
 }
