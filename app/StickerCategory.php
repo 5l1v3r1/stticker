@@ -10,4 +10,9 @@ class StickerCategory extends Model
     {
         return $this->belongsTo('App\StickerCategory', 'parent_id');
     }
+
+    public function stickers()
+    {
+        return $this->hasMany('App\Sticker');
+    }
 }
