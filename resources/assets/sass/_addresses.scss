@@ -1,0 +1,9 @@
+.addresses {
+  .card-new {
+    color: $gray-lighter;
+    &:hover {
+      border-color: $brand-success;
+      color: $brand-success;
+    }
+  }
+}
