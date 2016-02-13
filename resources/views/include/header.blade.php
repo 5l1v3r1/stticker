@@ -29,7 +29,7 @@
                         <a class="nav-link" href="#"><i class="fa fa-user-plus"></i> Kayıt Ol</a>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-shopping-basket"></i> Sepetim (0)</a>
+                        <a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i> Sepetim (0)</a>
                     </div>
                 </nav>
             </div>

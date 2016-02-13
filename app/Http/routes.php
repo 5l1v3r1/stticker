@@ -9,6 +9,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("sticker", ["as" => "sticker.index", "uses" => "StickerController@index"]);
         Route::get("sticker/{sticker}", ["as" => "sticker.show", "uses" => "StickerController@show"]);
 
+        Route::get("cart", ["as" => "cart.index", "uses" => "CartController@index"]);
+
     });
 
 });
