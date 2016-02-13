@@ -16,4 +16,8 @@ class UserController extends FrontendController
     public function register() {
         return view("user.register");
     }
+
+    public function settings() {
+        return view("user.settings");
+    }
 }

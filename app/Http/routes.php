@@ -16,6 +16,8 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get("contact", ["as" => "contact.index", "uses" => "ContactController@index"]);
 
+        Route::get("user/settings", ["as" => "user.settings", "uses" => "UserController@settings"]);
+
         Route::get("login", ["as" => "user.login", "uses" => "UserController@login"]);
         Route::get("register", ["as" => "user.register", "uses" => "UserController@register"]);
 
