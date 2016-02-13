@@ -8,6 +8,9 @@
             <a class="nav-link" href="#">Adres Bilgilerim</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="#">Siparişlerim</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="#">Çıkış Yap</a>
         </li>
     </ul>
