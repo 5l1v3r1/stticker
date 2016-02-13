@@ -16,19 +16,20 @@
                     <div class="nav-item">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sticker</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Yazılım</a>
-                            <a class="dropdown-item" href="#">Film</a>
-                            <a class="dropdown-item" href="#">Dizi</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-code"></i> Yazılım</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-film"></i> Film</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-video-camera"></i> Dizi</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-gamepad"></i> Oyun</a>
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link" href="#">Çok Satılanlar</a>
+                        <a class="nav-link" href="#"><i class="fa fa-sign-in"></i> Giriş Yap</a>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link" href="#">Yeni Çıkanlar</a>
+                        <a class="nav-link" href="#"><i class="fa fa-user-plus"></i> Kayıt Ol</a>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link" href="#">İletişim</a>
+                        <a class="nav-link" href="#"><i class="fa fa-shopping-basket"></i> Sepetim (0)</a>
                     </div>
                 </nav>
             </div>
