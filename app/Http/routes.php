@@ -12,6 +12,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("cart", ["as" => "cart.index", "uses" => "CartController@index"]);
         Route::get("payment", ["as" => "payment.index", "uses" => "PaymentController@index"]);
 
+        Route::get("login", ["as" => "user.login", "uses" => "UserController@login"]);
+        Route::get("register", ["as" => "user.register", "uses" => "UserController@register"]);
+
     });
 
 });

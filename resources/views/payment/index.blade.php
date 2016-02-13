@@ -1,6 +1,6 @@
-@extends("layout.master")
+@extends("layout.page")
 
-@section("body")
+@section("container")
     <section class="payment">
         <div class="container">
             <div class="row">
