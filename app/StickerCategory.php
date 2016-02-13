@@ -13,6 +13,11 @@ class StickerCategory extends Model
 
     public function stickers()
     {
-        return $this->hasMany('App\Sticker');
+        return $this->hasMany('App\Sticker', 'sticker_category_id');
+    }
+
+    public function subs()
+    {
+        return $this->hasMany('App\StickerCategory', 'parent_id');
     }
 }

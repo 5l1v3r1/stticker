@@ -1,5 +1,9 @@
 <?php
 
+Route::bind("sticker_category", function($value, $route) {
+    return \App\StickerCategory::where("slug", $value)->firstOrFail();
+});
+
 Route::group(['middleware' => ['web']], function () {
 
     Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function(){
@@ -8,6 +12,7 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get("sticker", ["as" => "sticker.index", "uses" => "StickerController@index"]);
         Route::get("sticker/{sticker}", ["as" => "sticker.show", "uses" => "StickerController@show"]);
+        Route::get("sticker-category/{sticker_category}", ["as" => "sticker.category.show", "uses" => "StickerCategoryController@show"]);
 
         Route::get("cart", ["as" => "cart.index", "uses" => "CartController@index"]);
         Route::get("payment", ["as" => "payment.index", "uses" => "PaymentController@index"]);

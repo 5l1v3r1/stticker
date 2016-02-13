@@ -16,7 +16,9 @@
                     <div class="nav-item">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route("frontend.sticker.index") }}" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cubes"></i> Sticker</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#"><i class="fa fa-code"></i> Yazılım</a>
+                            @foreach(\App\StickerCategory::whereNull("parent_id")->get() as $headerCategory)
+                            <a class="dropdown-item" href="{{ route("frontend.sticker.category.show", $headerCategory->slug) }}"><i class="{{ $headerCategory->icon }}"></i> {{ $headerCategory->name }}</a>
+                            @endforeach
                         </div>
                     </div>
                     @if(auth()->check())
