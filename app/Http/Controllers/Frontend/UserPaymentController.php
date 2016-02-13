@@ -12,4 +12,8 @@ class UserPaymentController extends FrontendController
     public function index() {
         return view("user.payment.index");
     }
+
+    public function show($payment) {
+        return view("user.payment.show");
+    }
 }

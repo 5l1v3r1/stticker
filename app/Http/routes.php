@@ -22,6 +22,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("user/address/create", ["as" => "user.address.create", "uses" => "UserAddressController@create"]);
 
         Route::get("user/payment", ["as" => "user.payment.index", "uses" => "UserPaymentController@index"]);
+        Route::get("user/payment/{user_payment}", ["as" => "user.payment.show", "uses" => "UserPaymentController@show"]);
 
         Route::get("login", ["as" => "user.login", "uses" => "UserController@login"]);
         Route::get("register", ["as" => "user.register", "uses" => "UserController@register"]);

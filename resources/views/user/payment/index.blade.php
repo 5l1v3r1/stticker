@@ -1,7 +1,7 @@
 @extends("layout.page")
 
 @section("container")
-    <section class="addresses">
+    <section>
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
