@@ -1,7 +1,7 @@
 @extends("layout.master")
 
 @section("body")
-    <section class="sticker-detail">
+    <section class="cart">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

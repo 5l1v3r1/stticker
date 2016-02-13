@@ -10,6 +10,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("sticker/{sticker}", ["as" => "sticker.show", "uses" => "StickerController@show"]);
 
         Route::get("cart", ["as" => "cart.index", "uses" => "CartController@index"]);
+        Route::get("payment", ["as" => "payment.index", "uses" => "PaymentController@index"]);
 
     });
 
