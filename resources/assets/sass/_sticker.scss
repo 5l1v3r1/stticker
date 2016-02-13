@@ -19,3 +19,22 @@
     }
   }
 }
+
+.sticker-detail {
+  .breadcrumb {
+    margin-top: 15px;
+  }
+
+  h2 {
+
+  }
+  h3 {
+    color: $gray-light;
+    font-size: $font-size-h5;
+    padding: 3px 0 5px 0;
+    border-bottom: 1px solid $gray-lighter;
+    a {
+      color: inherit;
+    }
+  }
+}

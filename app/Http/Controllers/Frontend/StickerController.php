@@ -12,4 +12,8 @@ class StickerController extends FrontendController
     public function index() {
         return view("sticker.index");
     }
+
+    public function show($sticker) {
+        return view("sticker.show");
+    }
 }
