@@ -18,6 +18,7 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::group(["middleware" => ["auth"]], function(){
             Route::get("user/settings", ["as" => "user.settings", "uses" => "UserController@settings"]);
+            Route::put("user/settings", ["as" => "user.settings", "uses" => "UserController@doSettings"]);
 
             Route::get("user/address", ["as" => "user.address.index", "uses" => "UserAddressController@index"]);
             Route::get("user/address/create", ["as" => "user.address.create", "uses" => "UserAddressController@create"]);

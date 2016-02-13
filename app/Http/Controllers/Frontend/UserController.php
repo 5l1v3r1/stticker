@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\UserSettingsRequest;
 use App\User;
 
 class UserController extends FrontendController
@@ -53,5 +54,18 @@ class UserController extends FrontendController
 
     public function settings() {
         return view("user.settings");
+    }
+
+    public function doSettings(UserSettingsRequest $request) {
+        auth()->user()->name     = $request->get("name");
+        auth()->user()->phone    = $request->get("phone");
+        auth()->user()->facebook = $request->get("facebook");
+        auth()->user()->twitter  = $request->get("twitter");
+        auth()->user()->github   = $request->get("github");
+        auth()->user()->bio      = $request->get("bio");
+        auth()->user()->save();
+
+        alert()->success("Kullanıcı bilgileriniz başarıyla güncellendi!");
+        return redirect()->route("frontend.user.settings");
     }
 }

@@ -12,68 +12,68 @@
                         <div class="col-md-12">
                             <div class="text-center">
                                 <img src="http://api.adorable.io/avatars/75/demo@demo.com" class="img-thumbnail img-circle">
-                                <h4>Eray Aydın</h4>
+                                <h4>{{ auth()->user()->fullname }}</h4>
                             </div>
-                            <form>
+                            {!! Form::open(["route" => "frontend.user.settings", "method" => "PUT"]) !!}
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Ad Soyad</label>
-                                            <input type="text" class="form-control form-control-lg">
+                                            {!! Form::label("name", "Ad Soyad") !!}
+                                            {!! Form::text("name", auth()->user()->name, ["class" => "form-control form-control-lg"]) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>E-Posta</label>
-                                            <input type="email" class="form-control form-control-lg">
+                                            {!! Form::label("email", "E-Posta") !!}
+                                            {!! Form::email("email", auth()->user()->email, ["class" => "form-control form-control-lg"]) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Telefon</label>
-                                            <input type="phone" class="form-control form-control-lg">
+                                            {!! Form::label("phone", "Telefon") !!}
+                                            {!! Form::text("phone", auth()->user()->phone, ["class" => "form-control form-control-lg"]) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Facebook</label>
+                                            {!! Form::label("facebook", "Facebook") !!}
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
-                                                <input type="text" class="form-control form-control-lg">
+                                                {!! Form::text("facebook", auth()->user()->facebook, ["class" => "form-control form-control-lg"]) !!}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Twitter</label>
+                                            {!! Form::label("twitter", "Twitter") !!}
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-                                                <input type="text" class="form-control form-control-lg">
+                                                {!! Form::text("twitter", auth()->user()->twitter, ["class" => "form-control form-control-lg"]) !!}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Github</label>
+                                            {!! Form::label("github", "Github") !!}
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-github"></i></span>
-                                                <input type="text" class="form-control form-control-lg">
+                                                {!! Form::text("github", auth()->user()->github, ["class" => "form-control form-control-lg"]) !!}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Hakkında</label>
-                                            <textarea class="form-control form-control-lg"></textarea>
+                                            {!! Form::label("bio", "Hakkında") !!}
+                                            {!! Form::textarea("bio", auth()->user()->bio, ["class" => "form-control form-control-lg"]) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block btn-lg">Kaydet <i class="fa fa-save"></i></button>
+                                            {!! Form::button("Kaydet <i class='fa fa-save'></i>", ["type" => "submit", "class" => "btn btn-primary btn-block btn-lg"]) !!}
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
