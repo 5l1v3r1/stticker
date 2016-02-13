@@ -12,4 +12,8 @@ class UserAddressController extends FrontendController
     public function index() {
         return view("user.address.index");
     }
+
+    public function create() {
+        return view("user.address.create");
+    }
 }
