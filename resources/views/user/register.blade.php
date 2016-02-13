@@ -5,7 +5,7 @@
     <nav class="register-top bg-primary">
         <div class="container">
             <div class="col-md-12">
-                <a href="#"><i class="fa fa-arrow-left"></i> Geri Dön</a>
+                <a href="{{ route("frontend.home.index") }}"><i class="fa fa-arrow-left"></i> Geri Dön</a>
             </div>
         </div>
     </nav>
@@ -14,19 +14,28 @@
         <div class="center-block register-box">
             <div class="text-center">
                 <img src="http://api.adorable.io/avatars/75/{{ str_random(6) }}" class="img-thumbnail img-circle">
-                <h4>Diğer <b>600</b> üyemiz gibi, sen de aramıza katıl!</h4>
+                <h4>Diğer <b>{{ \App\User::count() }}</b> üyemiz gibi, sen de aramıza katıl!</h4>
             </div>
-            <form class="form-horizontal">
+
+            @if($errors->has())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
+
+            {!! Form::open(["route" => "frontend.user.register"]) !!}
                 <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" placeholder="E-Posta Adresi">
-                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Şifre">
-                    <input type="password" name="password_confirmation" class="form-control form-control-lg" placeholder="Şifre Tekrarı">
+                    {!! Form::email("email", old("email"), ["class" => "form-control form-control-lg", "placeholder" => "E-Posta Adresi"]) !!}
+                    {!! Form::password("password", ["class" => "form-control form-control-lg", "placeholder" => "Şifre"]) !!}
+                    {!! Form::password("password_confirmation", ["class" => "form-control form-control-lg", "placeholder" => "Şifre Tekrarı"]) !!}
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-lg btn-block">Kayıt Ol</button>
-                    <a href="#" class="btn btn-primary-outline btn-block btn-lg">Giriş Yap</a>
+                    {!! Form::button("Kayıt Ol", ["type" => "submit", "class" => "btn btn-success btn-lg btn-block"]) !!}
+                    <a href="{{ route("frontend.user.login") }}" class="btn btn-primary-outline btn-block btn-lg">Giriş Yap</a>
                 </div>
-            </form>
+            {!! Form::close() !!}
         </div>
     </section>
 @stop

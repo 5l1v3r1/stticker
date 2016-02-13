@@ -5,7 +5,7 @@
     <nav class="login-top bg-primary">
         <div class="container">
             <div class="col-md-12">
-                <a href="#"><i class="fa fa-arrow-left"></i> Geri Dön</a>
+                <a href="{{ route("frontend.home.index") }}"><i class="fa fa-arrow-left"></i> Geri Dön</a>
             </div>
         </div>
     </nav>
@@ -15,16 +15,25 @@
             <div class="text-center">
                 <img src="http://api.adorable.io/avatars/75/{{ str_random(6) }}" class="img-thumbnail img-circle">
             </div>
-            <form class="form-horizontal">
+
+            @if($errors->has())
+                <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+                </div>
+            @endif
+
+            {!! Form::open(["route" => "frontend.user.login"]) !!}
                 <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" placeholder="E-Posta Adresi">
-                    <input type="password" class="form-control form-control-lg" placeholder="Şifre">
+                    {!! Form::email("email", old("email"), ["class" => "form-control form-control-lg", "placeholder" => "E-Posta Adresi"]) !!}
+                    {!! Form::password("password", ["class" => "form-control form-control-lg", "placeholder" => "Şifre"]) !!}
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Giriş Yap</button>
-                    <a href="#" class="btn btn-success-outline btn-block btn-lg">Kayıt Ol</a>
+                    {!! Form::submit("Giriş Yap", ["type" => "submit", "class" => "btn btn-primary btn-lg btn-block"]) !!}
+                    <a href="{{ route("frontend.user.register") }}" class="btn btn-success-outline btn-block btn-lg">Kayıt Ol</a>
                 </div>
-            </form>
+            {!! Form::close() !!}
         </div>
     </section>
 @stop
