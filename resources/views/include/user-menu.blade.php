@@ -5,7 +5,7 @@
             <a class="nav-link @if(\Request::is("user/settings")) active @endif" href="{{ route("frontend.user.settings") }}">Hesap Ayarları</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Adres Bilgilerim</a>
+            <a class="nav-link @if(\Request::is("user/address*")) active @endif" href="{{ route("frontend.user.address.index") }}">Adres Bilgilerim</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Siparişlerim</a>

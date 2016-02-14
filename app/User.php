@@ -27,4 +27,8 @@ class User extends Authenticatable
     public function getFullnameAttribute() {
         return $this->name ? $this->name : $this->email;
     }
+
+    public function addresses() {
+        return $this->hasMany('App\UserAddress');
+    }
 }
