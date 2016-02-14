@@ -10,10 +10,14 @@ use App\Http\Controllers\Frontend\FrontendController;
 class UserPaymentController extends FrontendController
 {
     public function index() {
-        return view("user.payment.index");
+        return view("user.payment.index", [
+            "payments" => auth()->user()->orders,
+        ]);
     }
 
     public function show($payment) {
-        return view("user.payment.show");
+        return view("user.payment.show", [
+            "payment" => $payment,
+        ]);
     }
 }

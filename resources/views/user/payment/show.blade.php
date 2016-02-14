@@ -22,9 +22,9 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>IST01</td>
-                            <td>13.02.2016 - 05:03</td>
-                            <td class="text-xs-center"><i class="fa fa-try"></i> 30.00</td>
+                            <td>{{ $payment->code }}</td>
+                            <td>{{ $payment->created_at->format("d.m.Y - H:i") }}</td>
+                            <td class="text-xs-center"><i class="fa fa-try"></i> {{ number_format($payment->total + $payment->cargo, 2) }}</td>
                             <td class="text-xs-center">
                                 <span class="label label-info">Kargoda</span>
                             </td>
@@ -37,7 +37,6 @@
                     <table class="table table-striped table-hover table-cart table-middle">
                         <thead class="thead-inverse">
                         <tr>
-                            <th>#</th>
                             <th></th>
                             <th>Ürün</th>
                             <th>Boyut</th>
@@ -47,15 +46,26 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($payment->stickers as $sticker)
                         <tr>
-                            <td>1</td>
-                            <td width="10%"><img src="http://devstickers.com/assets/img/cat/php.png" class="img-fluid img-thumbnail"></td>
-                            <td>PHP</td>
-                            <td>3.00'' x 4.00''</td>
-                            <td width="8%">3 Adet</td>
-                            <td class="text-xs-center">10.00 <i class="fa fa-try"></i></td>
-                            <td class="text-xs-center">30.00 <i class="fa fa-try"></i></td>
+                            <td width="10%"><img src="{{ asset($sticker->image) }}" class="img-fluid img-thumbnail"></td>
+                            <td>{{ $sticker->name }}</td>
+                            <td>
+                                @if($sticker->size == "small")
+                                    3.00'' x 4.00''
+                                @elseif($sticker->size == "middle")
+                                    4.1'' x 5.5''
+                                @elseif($sticker->size == "big")
+                                    6.4'' x 8.5''
+                                @elseif($sticker->size == "extra_big")
+                                    10.5'' x 14.0''
+                                @endif
+                            </td>
+                            <td class="quantity">{{ $sticker->quantity }} Adet</td>
+                            <td class="text-xs-center">{{ number_format($sticker->price/$sticker->quantity, 2) }} <i class="fa fa-try"></i></td>
+                            <td class="text-xs-center">{{ number_format($sticker->price, 2) }} <i class="fa fa-try"></i></td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

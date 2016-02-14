@@ -8,7 +8,7 @@
             <a class="nav-link @if(\Request::is("user/address*")) active @endif" href="{{ route("frontend.user.address.index") }}">Adres Bilgilerim</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Siparişlerim</a>
+            <a class="nav-link @if(\Request::is("user/payment*")) active @endif" href="{{ route("frontend.user.payment.index") }}">Siparişlerim</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route("frontend.user.logout") }}">Çıkış Yap</a>

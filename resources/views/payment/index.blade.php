@@ -164,7 +164,7 @@
                                     Banka Havalesi
                                 </label>
                             </div>
-                            <div id="bank" style="display: none;">
+                            <div id="bank" style="display: block;">
                                 <div class="alert alert-info">
                                     <p>Ödemeyi bilgileri verilen Banka Hesabımıza yatırın. Lütfen ilgili Sipariş Numarasını havale dekontunun açıklama kısmına yazınız. Siparişiniz banka havalesi onaylanmadıkça işleme alınmayacaktır.</p>
                                 </div>

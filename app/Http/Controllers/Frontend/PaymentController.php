@@ -26,7 +26,7 @@ class PaymentController extends FrontendController
         $order = new Order;
 
         do {
-            $code = substr(\App\City::find($request->get("city_id"))->name, 0, 3).str_random(5);
+            $code = strtoupper(substr(\App\City::find($request->get("city_id"))->name, 0, 3)).strtolower(str_random(5));
         } while(Order::where("code", $code)->count());
         $order->code         = $code;
         $order->name         = $request->get("name");
@@ -39,14 +39,26 @@ class PaymentController extends FrontendController
         $order->payment_type = $request->get("payment");
         $order->city_id      = $request->get("city_id");
         $order->user_id      = auth()->check() ? auth()->user()->id : null;
+
+        $total = 0;
+        foreach(Cart::content() as $sticker) {
+            $total += $sticker->price * $sticker->qty;
+        }
+        $order->total = $total;
+        $order->cargo = $total >= 30.00 ? 0.00 : 5.00;
+
         $order->save();
 
         foreach(Cart::content() as $sticker) {
+            $s = Sticker::where("slug", $sticker->options->sticker)->first();
             $product             = new OrderSticker;
             $product->order_id   = $order->id;
-            $product->sticker_id = Sticker::where("slug", $sticker->options->sticker)->first()->id;
+            $product->sticker_id = $s->id;
             $product->quantity   = $sticker->qty;
             $product->size       = $sticker->options->size;
+            $product->name       = $s->name;
+            $product->image      = $s->image;
+            $product->price      = $sticker->price * $sticker->qty;
             $product->save();
         }
 
