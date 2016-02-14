@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "5.2.*",
         "uxweb/sweet-alert": "~1.1",
-        "webjektif/laravel-config": "v1.0"
+        "webjektif/laravel-config": "v1.0",
+        "gloudemans/shoppingcart": "~1.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

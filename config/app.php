@@ -162,6 +162,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Webjektif\LaravelConfig\LaravelConfigServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
     ],
 
@@ -212,6 +213,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Alert'     => UxWeb\SweetAlert\SweetAlert::class,
         'Settings'  => Webjektif\LaravelConfig\LaravelConfigFacade::class,
+        'Cart'      => Gloudemans\Shoppingcart\Facades\Cart::class,
 
     ],
 
