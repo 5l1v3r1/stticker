@@ -30,3 +30,23 @@ $("#quantity").change(function(){
 $(".select2").select2({
     placeholder: "Boyut Seçin",
 });
+
+$(".form-cart").submit(function(){
+
+    $.ajax({
+        data: $(this).serialize(),
+        method: "POST",
+        dataType: "JSON",
+        url: $(this).attr("action")
+    }).done(function(data){
+        console.log(data);
+        $(".cart-count").html(Object.keys(data).length);
+        swal("Başarılı", "Siparişiniz sepete eklendi!", "success");
+    });
+
+    return false;
+});
+
+$(function () {
+    $('[data-toggle="popover"]').popover()
+});

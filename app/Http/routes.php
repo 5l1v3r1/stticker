@@ -19,6 +19,11 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("sticker-category/{sticker_category}", ["as" => "sticker.category.show", "uses" => "StickerCategoryController@show"]);
 
         Route::get("cart", ["as" => "cart.index", "uses" => "CartController@index"]);
+        Route::get("cart/content", ["as" => "cart.content", "uses" => "CartController@content"]);
+        Route::post("cart/add/{sticker}", ["as" => "cart.add", "uses" => "CartController@add"]);
+        Route::get("cart/remove/{rowid}", ["as" => "cart.remove", "uses" => "CartController@remove"]);
+        Route::post("cart/update", ["as" => "cart.update", "uses" => "CartController@update"]);
+        Route::get("cart/destroy", ["as" => "cart.destroy", "uses" => "CartController@destroy"]);
         Route::get("payment", ["as" => "payment.index", "uses" => "PaymentController@index"]);
 
         Route::get("page/{page}", ["as" => "page.show", "uses" => "PageController@show"]);

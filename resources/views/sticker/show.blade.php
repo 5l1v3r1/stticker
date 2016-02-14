@@ -21,24 +21,24 @@
                 <div class="col-md-5">
                     <h2>{{ $sticker->name }}</h2>
                     <h3><a href="{{ route("frontend.sticker.category.show", $sticker->category->slug) }}">{{ $sticker->category->name }}</a></h3>
-                    <form>
+                    {!! Form::open(["route" => ["frontend.cart.add", $sticker->slug], "class" => "form-cart"]) !!}
                         <div class="form-group">
                             <div class="input-group">
-                                <label for="size" class="input-group-addon bg-primary"><i class="fa fa-crop"></i> Boyut</label>
-                                <select id="size" class="form-control">
-                                    <option>Küçük (3.0'' x 4.0'')</option>
-                                    <option>Orta (4.1'' x 5.5'')</option>
-                                    <option>Büyük (6.4'' x 8.5'')</option>
-                                    <option>Çok Büyük (10.5'' x 14.0'')</option>
-                                </select>
+                                {!! Form::label("size", "Boyut", ["class" => "input-group-addon bg-primary"]) !!}
+                                {!! Form::select("size", [
+                                    "small"  => "Küçük (3.0'' x 4.0'')",
+                                    "middle" => "Orta (4.1'' x 5.5'')",
+                                    "big"    => "Büyük (6.4'' x 8.5'')",
+                                    "extra_big" => "Çok Büyük (10.5'' x 14.0'')",
+                                ], old("size"), ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <label for="quantity" class="input-group-addon bg-primary"><i class="fa fa-archive"></i> Adeti</label>
-                                <input id="quantity" type="number" class="form-control" value="1">
+                                {!! Form::label("quantity", "Adeti", ["class" => "input-group-addon bg-primary"]) !!}
+                                {!! Form::number("quantity", 1, ["class" => "form-control"]) !!}
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button">Sepete Ekle <i class="fa fa-shopping-basket"></i></button>
+                                    {!! Form::button("Sepete Ekle", ["class" => "btn btn-primary", "type" => "submit"]) !!}
                                 </span>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                 </p>
                             </div>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                     <div class="card">
                         <div class="card-header text-xs-center">
                             Sosyal Ağda Paylaş

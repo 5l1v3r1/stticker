@@ -4,5 +4,19 @@
     th, td {
       vertical-align: middle;
     }
+    .quantity {
+      width: 8%;
+    }
+    @each $breakpoint in $grid-breakpoints {
+      $key: nth($breakpoint, 1);
+      $value: nth($breakpoint, 2);
+      @media screen and (max-width:$value) {
+        @if $key != "xs" and $key != "sm" and $key != "md" {
+          .quantity {
+            width: 20%;
+          }
+        }
+      }
+    }
   }
 }

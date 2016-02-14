@@ -37,7 +37,7 @@
                         </div>
                     @endif
                     <div class="nav-item">
-                        <a class="nav-link" href="{{ route("frontend.cart.index") }}"><i class="fa fa-shopping-cart"></i> Sepetim (0)</a>
+                        <a class="nav-link" href="{{ route("frontend.cart.index") }}"><i class="fa fa-shopping-cart"></i> Sepetim (<span class="cart-count">{{ count(\Cart::content()) }}</span>)</a>
                     </div>
                 </nav>
             </div>
