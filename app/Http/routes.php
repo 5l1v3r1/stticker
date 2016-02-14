@@ -3,6 +3,9 @@
 Route::bind("sticker_category", function($value, $route) {
     return \App\StickerCategory::where("slug", $value)->firstOrFail();
 });
+Route::bind("sticker", function($value, $route) {
+    return \App\Sticker::where("slug", $value)->firstOrFail();
+});
 
 Route::group(['middleware' => ['web']], function () {
 

@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <nav class="text-center">
-                                {!! $stickers->render() !!}
+                                @include('pagination.bootstrap-4', ['paginator' => $stickers])
                             </nav>
                         </div>
                     </div>

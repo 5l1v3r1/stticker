@@ -13,7 +13,13 @@ class StickerCategory extends Model
 
     public function stickers()
     {
-        return $this->hasMany('App\Sticker', 'sticker_category_id');
+        $categories = [];
+        $categories[] = $this->id;
+
+        foreach($this->subs as $subCategory){
+            $categories[] = $subCategory->id;
+        }
+        return \App\Sticker::whereIn("sticker_category_id", $categories);
     }
 
     public function subs()

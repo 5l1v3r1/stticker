@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Sticker;
 
 class StickerController extends FrontendController
 {
@@ -13,7 +14,9 @@ class StickerController extends FrontendController
         return view("sticker.index");
     }
 
-    public function show($sticker) {
-        return view("sticker.show");
+    public function show(Sticker $sticker) {
+        return view("sticker.show", [
+            "sticker" => $sticker,
+        ]);
     }
 }
