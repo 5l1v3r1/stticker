@@ -163,6 +163,7 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Webjektif\LaravelConfig\LaravelConfigServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
     ],
 
@@ -214,6 +215,7 @@ return [
         'Alert'     => UxWeb\SweetAlert\SweetAlert::class,
         'Settings'  => Webjektif\LaravelConfig\LaravelConfigFacade::class,
         'Cart'      => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Gravatar'  => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
 
     ],
 
