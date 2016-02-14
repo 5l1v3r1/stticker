@@ -13,7 +13,7 @@ class StickerCategoryController extends FrontendController
 {
 
     public function show(StickerCategory $category) {
-        $stickers = $category->stickers()->orderBy("name", "ASC")->paginate(1);
+        $stickers = $category->stickers()->orderBy("name", "ASC")->paginate(16);
         return view("sticker.category.show", [
             "category" => $category,
             "stickers" => $stickers
