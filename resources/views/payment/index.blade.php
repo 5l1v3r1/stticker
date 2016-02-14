@@ -6,84 +6,101 @@
             <div class="row">
                 <div class="col-md-12">
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-cubes"></i> Stticker</a></li>
-                        <li><a href="#"><i class="fa fa-home"></i> Anasayfa</a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i> Sepetim</a></li>
+                        <li><a href="{{ route("frontend.home.index") }}"><i class="fa fa-cubes"></i> Stticker</a></li>
+                        <li><a href="{{ route("frontend.home.index") }}"><i class="fa fa-home"></i> Anasayfa</a></li>
+                        <li><a href="{{ route("frontend.cart.index") }}"><i class="fa fa-shopping-cart"></i> Sepetim</a></li>
                         <li class="active"><i class="fa fa-try"></i> Sipariş</li>
                     </ol>
                 </div>
             </div>
-            <form>
+            <div class="row">
+                <div class="col-md-12">
+                    @if($errors->has())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            </div>
+            {!! Form::open(["route" => "frontend.payment.store"]) !!}
             <div class="row">
                 <div class="col-md-6">
                     <h3>Sipariş Bilgileri</h3>
                     <div class="row">
-                        <div class="col-md-6">
+                        @if(auth()->check())
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label>Ad</label>
-                                <input type="text" class="form-control">
+                                {!! Form::label("my_address", "Adreslerim") !!}
+                                {!! Form::select("my_address", [0 => "- Yeni Adres -"] + \App\UserAddress::lists("name", "id")->toArray(), old("my_address"), ["class" => "form-control", "data-url" => route("frontend.user.address.show")]) !!}
+                            </div>
+                        </div>
+                        @endif
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {!! Form::label("name", "Ad Soyad") !!}
+                                {!! Form::text("name", old("name") ? old("name") : auth()->check() ? auth()->user()->name : null, ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Soyad</label>
-                                <input type="text" class="form-control">
+                                {!! Form::label("email", "E-Posta") !!}
+                                {!! Form::email("email", old("email") ? old("email") : auth()->check() ? auth()->user()->email : null, ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>E-Posta</label>
-                                <input type="email" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Telefon</label>
-                                <input type="phone" class="form-control">
+                                {!! Form::label("phone", "Telefon") !!}
+                                {!! Form::text("phone", old("phone") ? old("phone") : auth()->check() ? auth()->user()->phone : null, ["class" => "form-control", "type" => "phone"]) !!}
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Şehir</label>
-                                <select class="form-control">
-                                    <option>Şehir Seçiniz</option>
-                                </select>
+                                {!! Form::label("city_id", "Şehir") !!}
+                                {!! Form::select("city_id", [0 => "Şehir Seçiniz"] + \App\City::lists("name", "id")->toArray(), old("city_id"), ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>İlçe / Semt</label>
-                                <input type="text" class="form-control">
+                                {!! Form::label("town", "İlçe / Semt") !!}
+                                {!! Form::text("town", old("town"), ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Posta Kodu</label>
-                                <input type="text" class="form-control">
+                                {!! Form::label("zipcode", "Posta Kodu") !!}
+                                {!! Form::text("zipcode", old("zipcode"), ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Adres</label>
-                                <textarea rows="3" class="form-control"></textarea>
+                                {!! Form::label("address", "Adres") !!}
+                                {!! Form::textarea("address", old("address"), ["class" => "form-control", "rows" => 3]) !!}
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Sipariş Notu</label>
-                                <textarea rows="3" class="form-control"></textarea>
+                                {!! Form::label("notes", "Sipariş Notu") !!}
+                                {!! Form::textarea("notes", old("notes"), ["class" => "form-control", "rows" => 3]) !!}
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="c-input c-checkbox">
-                                    <input type="checkbox" checked>
+                                    {!! Form::checkbox("remember", true, old("remember") ? true : false, ["id" => "remember"]) !!}
                                     <span class="c-indicator"></span>
                                     Kargo bilgilerini sonraki alışverişlerim için kaydet.
                                 </label>
                             </div>
                         </div>
+                            <div class="col-md-12" style="display: none;" id="addressName">
+                                <div class="form-group">
+                                    {!! Form::label("address_name", "Yeni Adres Başlığı") !!}
+                                    {!! Form::text("address_name", old("address_name"), ["class" => "form-control"]) !!}
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -99,76 +116,83 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($cart as $item)
+                                    <?php $sticker = \App\Sticker::where("slug", $item->options->sticker)->first(); ?>
+                                    <?php
+                                    if($item->options->size == "small") {
+                                        $number_price = 1.00;
+                                        $size = "3.00'' x 4.00''";
+                                    } elseif($item->options->size == "middle") {
+                                        $number_price = 1.50;
+                                        $size = "4.1'' x 5.5''";
+                                    } elseif($item->options->size == "big") {
+                                        $number_price = 2.00;
+                                        $size = "6.4'' x 8.5''";
+                                    } elseif($item->options->size == "extra_big") {
+                                        $number_price = 2.50;
+                                        $size = "10.5'' x 14.0''";
+                                    }
+                                    ?>
                                 <tr>
-                                    <td>PHP(3.00'' x 4.00'') <b>x 3</b></td>
-                                    <td>5.00 <i class="fa fa-try"></i></td>
-                                    <td><button class="btn btn-secondary-outline btn-sm"><i class="fa fa-trash-o"></i></button></td>
+                                    <td>{{ $sticker->name }}({{ $size }}) <b>x {{ $item->qty }}</b></td>
+                                    <td>{{ number_format($item->price*$item->qty, 2) }} <i class="fa fa-try"></i></td>
+                                    <td><a href="{{ route("frontend.cart.remove", $item->rowid) }}" class="btn btn-secondary-outline btn-sm"><i class="fa fa-trash-o"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td>PHP(3.00'' x 4.00'') <b>x 3</b></td>
-                                    <td>5.00 <i class="fa fa-try"></i></td>
-                                    <td><button class="btn btn-secondary-outline btn-sm"><i class="fa fa-trash-o"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>PHP(3.00'' x 4.00'') <b>x 3</b></td>
-                                    <td>5.00 <i class="fa fa-try"></i></td>
-                                    <td><button class="btn btn-secondary-outline btn-sm"><i class="fa fa-trash-o"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>PHP(3.00'' x 4.00'') <b>x 3</b></td>
-                                    <td>5.00 <i class="fa fa-try"></i></td>
-                                    <td><button class="btn btn-secondary-outline btn-sm"><i class="fa fa-trash-o"></i></button></td>
-                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 Ara Toplam
-                                <span class="label label-default label-pill pull-xs-right">30.00 <i class="fa fa-try"></i></span>
+                                <span class="label label-default label-pill pull-xs-right">{{ number_format(Cart::total(), 2) }} <i class="fa fa-try"></i></span>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item @if($cargo == 0) list-group-item-success @endif">
                                 Kargo Ücreti
-                                <span class="label label-default label-pill pull-xs-right">5.00 <i class="fa fa-try"></i></span>
+                                <span class="label label-default label-pill pull-xs-right">{{ number_format($cargo, 2) }} <i class="fa fa-try"></i> @if($cargo == 0.00)(Ücretsiz)@endif</span>
                             </li>
                             <li class="list-group-item">
                                 Genel Toplam
-                                <span class="label label-primary label-pill pull-xs-right">35.00 <i class="fa fa-try"></i></span>
+                                <span class="label label-primary label-pill pull-xs-right">{{ number_format(Cart::total() + $cargo, 2) }} <i class="fa fa-try"></i></span>
                             </li>
                         </ul>
                         <div class="card-block">
                             <div class="form-group">
                                 <label class="c-input c-radio">
-                                    <input name="payment" value="bank" type="radio" checked>
+                                    {!! Form::radio("payment", "bank", old("payment") ? old("payment") == "bank" ? true : false : true) !!}
                                     <span class="c-indicator"></span>
                                     Banka Havalesi
                                 </label>
                             </div>
-                            <div id="bank">
+                            <div id="bank" style="display: none;">
                                 <div class="alert alert-info">
                                     <p>Ödemeyi bilgileri verilen Banka Hesabımıza yatırın. Lütfen ilgili Sipariş Numarasını havale dekontunun açıklama kısmına yazınız. Siparişiniz banka havalesi onaylanmadıkça işleme alınmayacaktır.</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="c-input c-radio">
-                                    <input name="payment" value="paypal" type="radio">
+                                    {!! Form::radio("payment", "paypal", old("payment") == "paypal" ? true : false) !!}
                                     <span class="c-indicator"></span>
                                     Paypal ile Ödeme
                                 </label>
                             </div>
-                            <div id="paypal">
+                            <div id="paypal" style="display: none;">
                                 <div class="alert alert-info">
                                     <p>PayPal aracılığıyla ödemede PayPal hesabınız yoksa bile kredi kartı ile ödeme yapabilirsiniz.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card-block text-xs-right">
-                            <a href="#" class="card-link btn btn-primary btn-xs">Siparişi Onayla <i class="fa fa-try"></i></a>
+                            {!! Form::button("Siparişi Onayla", ["class" => "card-link btn btn-primary btn-xs", "type" => "submit"]) !!}
                         </div>
                     </div>
                 </div>
             </div>
-            </form>
+            {!! Form::close() !!}
         </div>
     </section>
+@stop
+
+@section("scripts")
+    <script src="{{ asset("assets/js/payment.js") }}"></script>
 @stop

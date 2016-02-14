@@ -37,6 +37,18 @@ class UserAddressController extends FrontendController
         return redirect()->route("frontend.user.address.index");
     }
 
+    public function show(Request $request) {
+        $json            = ["status" => true];
+        $address =  UserAddress::where("user_id", auth()->user()->id)->where("id", $request->get("id"))->first();
+        if($address){
+            $json["address"] = $address;
+        } else {
+            $json["status"] = false;
+            $json["error"]  = "Kayıtlı adres bulunamadı.";
+        }
+        return $json;
+    }
+
     public function edit(UserAddress $address) {
         return view("user.address.edit", [
             "address" => $address,

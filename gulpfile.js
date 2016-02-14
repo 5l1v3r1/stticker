@@ -19,6 +19,9 @@ elixir(function(mix) {
         .scripts([
             'app.js'
         ], 'public/assets/js/app.js')
+        .scripts([
+            'payment.js'
+        ], 'public/assets/js/payment.js')
         .copy('./bower_components/font-awesome/fonts/', 'public/assets/fonts')
         .copy('./resources/assets/images/', 'public/assets/images');
 });

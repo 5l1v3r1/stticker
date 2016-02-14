@@ -13,6 +13,17 @@
                             <div class="text-center">
                                 <h4>Adres Ekle</h4>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @if($errors->has())
+                                        <div class="alert alert-danger">
+                                        @foreach ($errors->all() as $error)
+                                            <p>{{ $error }}</p>
+                                        @endforeach
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
                             {!! Form::open(["route" => "frontend.user.address.store"]) !!}
                                 <div class="row">
                                     <div class="col-md-12">

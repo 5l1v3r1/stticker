@@ -7,6 +7,7 @@ Route::bind("sticker", function($value, $route) {
     return \App\Sticker::where("slug", $value)->firstOrFail();
 });
 Route::model("user_address", 'App\UserAddress');
+Route::model("order", 'App\Order');
 
 Route::group(['middleware' => ['web']], function () {
 
@@ -24,7 +25,9 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("cart/remove/{rowid}", ["as" => "cart.remove", "uses" => "CartController@remove"]);
         Route::post("cart/update", ["as" => "cart.update", "uses" => "CartController@update"]);
         Route::get("cart/destroy", ["as" => "cart.destroy", "uses" => "CartController@destroy"]);
+
         Route::get("payment", ["as" => "payment.index", "uses" => "PaymentController@index"]);
+        Route::post("payment", ["as" => "payment.store", "uses" => "PaymentController@payment"]);
 
         Route::get("page/{page}", ["as" => "page.show", "uses" => "PageController@show"]);
 
@@ -37,12 +40,13 @@ Route::group(['middleware' => ['web']], function () {
             Route::get("user/address", ["as" => "user.address.index", "uses" => "UserAddressController@index"]);
             Route::get("user/address/create", ["as" => "user.address.create", "uses" => "UserAddressController@create"]);
             Route::post("user/address", ["as" => "user.address.store", "uses" => "UserAddressController@store"]);
+            Route::post("user/address/show", ["as" => "user.address.show", "uses" => "UserAddressController@show"]);
             Route::get("user/address/{user_address}/edit", ["as" => "user.address.edit", "uses" => "UserAddressController@edit"]);
             Route::put("user/address/{user_address}", ["as" => "user.address.update", "uses" => "UserAddressController@update"]);
             Route::get("user/address/{user_address}/delete", ["as" => "user.address.destroy", "uses" => "UserAddressController@destroy"]);
 
             Route::get("user/payment", ["as" => "user.payment.index", "uses" => "UserPaymentController@index"]);
-            Route::get("user/payment/{user_payment}", ["as" => "user.payment.show", "uses" => "UserPaymentController@show"]);
+            Route::get("user/payment/{order}", ["as" => "user.payment.show", "uses" => "UserPaymentController@show"]);
 
             Route::get("logout", ["as" => "user.logout", "uses" => "UserController@logout"]);
         });

@@ -50,3 +50,9 @@ $(".form-cart").submit(function(){
 $(function () {
     $('[data-toggle="popover"]').popover()
 });
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+    }
+});
