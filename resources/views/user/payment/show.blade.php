@@ -18,7 +18,7 @@
                                 @if($payment->payment_type == "bank")
                                 <div class="alert alert-info text-xs-center">
                                     <h3>Banka Bilgileri</h3>
-                                    <p>asdasdasdas</p>
+                                    <p>{{ Settings::get("bank") }}</p>
                                 </div>
                                 @endif
                             </div>
