@@ -11,7 +11,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="text-center">
-                                <img src="http://api.adorable.io/avatars/75/demo@demo.com" class="img-thumbnail img-circle">
+                                @if(Gravatar::exists(auth()->user()->email))
+                                    <img src="{{ Gravatar::src(auth()->user()->email) }}" class="img-thumbnail img-circle">
+                                @else
+                                    <img src="http://api.adorable.io/avatars/75/{{ auth()->user()->email }}" class="img-thumbnail img-circle">
+                                @endif
                                 <h4>{{ auth()->user()->fullname }}</h4>
                             </div>
                             {!! Form::open(["route" => "frontend.user.settings", "method" => "PUT"]) !!}
