@@ -8,7 +8,22 @@
                     @include("include.user-menu")
                 </div>
                 <div class="col-md-9 main">
-
+                    @if($payment->status == 0)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-success text-xs-center">
+                                    <p>Siparişiniz ödeme beklemektedir.</p>
+                                    <p><a href="#" class="btn btn-success"><i class="fa fa-paypal"></i> Paypal ile Ödeme</a></p>
+                                </div>
+                                @if($payment->payment_type == "bank")
+                                <div class="alert alert-info text-xs-center">
+                                    <h3>Banka Bilgileri</h3>
+                                    <p>asdasdasdas</p>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
                     <h3>Sipariş Detayı</h3>
 
                     <table class="table table-striped table-middle">
