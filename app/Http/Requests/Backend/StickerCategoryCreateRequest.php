@@ -26,7 +26,7 @@ class StickerCategoryCreateRequest extends Request
         return [
             "name"      => "required",
             "slug"      => "required|unique:sticker_categories",
-            "parent_id" => "required|exists:sticker_categories,id",
+            "parent_id" => "required",
         ];
     }
 }

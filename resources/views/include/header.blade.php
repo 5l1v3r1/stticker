@@ -23,7 +23,7 @@
                     </div>
                     @if(auth()->check())
                         <div class="nav-item">
-                            <a class="nav-link" href="{{ route("frontend.user.settings") }}"><i class="fa fa-user"></i> Eray Aydın</a>
+                            <a class="nav-link" href="{{ route("frontend.user.settings") }}"><i class="fa fa-user"></i> {{ auth()->user()->fullname }}</a>
                         </div>
                         <div class="nav-item">
                             <a class="nav-link" href="{{ route("frontend.user.logout") }}"><i class="fa fa-sign-out"></i> Çıkış Yap</a>
