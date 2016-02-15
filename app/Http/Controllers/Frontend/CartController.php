@@ -45,8 +45,10 @@ class CartController extends FrontendController
     }
 
     public function update(Request $request) {
-        foreach($request->get("cart") as $row => $quantity) {
-            Cart::update($row, ["qty" => $quantity]);
+        if($request->get("cart")){
+            foreach($request->get("cart") as $row => $quantity) {
+                Cart::update($row, ["qty" => $quantity]);
+            }
         }
         alert()->success("Sepetiniz güncellendi!");
         return redirect()->back();
