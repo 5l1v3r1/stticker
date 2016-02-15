@@ -30,6 +30,8 @@
                         @endforeach
                         </tbody>
                     </table>
+
+                    {!! $stickers->render() !!}
                 </div>
             </div>
         </div>

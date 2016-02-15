@@ -68,7 +68,12 @@ Route::group(['middleware' => ['web']], function () {
         Route::put("sticker/{sticker}", ["as" => "sticker.update", "uses" => "StickerController@update"]);
         Route::get("sticker/{sticker}/delete", ["as" => "sticker.destroy", "uses" => "StickerController@destroy"]);
 
-        Route::get("category", ["as" => "sticker.category.index", "uses" => "StickerCategoryController@index"]);
+        Route::get("category/create", ["as" => "sticker.category.create", "uses" => "StickerCategoryController@create"]);
+        Route::post("category", ["as" => "sticker.category.store", "uses" => "StickerCategoryController@store"]);
+        Route::get("category/{sticker_category?}", ["as" => "sticker.category.index", "uses" => "StickerCategoryController@index"]);
+        Route::get("category/{sticker_category}/edit", ["as" => "sticker.category.edit", "uses" => "StickerCategoryController@edit"]);
+        Route::put("category/{sticker_category}", ["as" => "sticker.category.update", "uses" => "StickerCategoryController@update"]);
+        Route::get("category/{sticker_category}/delete", ["as" => "sticker.category.destroy", "uses" => "StickerCategoryController@destroy"]);
 
         Route::get("order", ["as" => "order.index", "uses" => "OrderController@index"]);
 
