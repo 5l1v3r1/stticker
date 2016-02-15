@@ -60,4 +60,20 @@ Route::group(['middleware' => ['web']], function () {
         });
     });
 
+    Route::group(["middleware" => ["admin"], "prefix" => "admin", "as" => "backend.", "namespace" => "Backend"], function(){
+        Route::get("sticker", ["as" => "sticker.index", "uses" => "StickerController@index"]);
+
+        Route::get("category", ["as" => "sticker.category.index", "uses" => "StickerCategoryController@index"]);
+
+        Route::get("order", ["as" => "order.index", "uses" => "OrderController@index"]);
+
+        Route::get("page", ["as" => "page.index", "uses" => "PageController@index"]);
+
+        Route::get("user", ["as" => "user.index", "uses" => "UserController@index"]);
+
+        Route::get("blog", ["as" => "blog.index", "uses" => "BlogController@index"]);
+
+        Route::get("settings", ["as" => "settings", "uses" => "SettingsController@index"]);
+    });
+
 });
