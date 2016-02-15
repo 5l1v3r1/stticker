@@ -1,5 +1,6 @@
 ### Stticker Application ###
 public/assets
+public/upload
 
 ### Laravel ###
 .env

@@ -62,6 +62,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(["middleware" => ["admin"], "prefix" => "admin", "as" => "backend.", "namespace" => "Backend"], function(){
         Route::get("sticker", ["as" => "sticker.index", "uses" => "StickerController@index"]);
+        Route::get("sticker/create", ["as" => "sticker.create", "uses" => "StickerController@create"]);
+        Route::post("sticker", ["as" => "sticker.store", "uses" => "StickerController@store"]);
+        Route::get("sticker/{sticker}/edit", ["as" => "sticker.edit", "uses" => "StickerController@edit"]);
+        Route::put("sticker/{sticker}", ["as" => "sticker.update", "uses" => "StickerController@update"]);
+        Route::get("sticker/{sticker}/delete", ["as" => "sticker.destroy", "uses" => "StickerController@destroy"]);
 
         Route::get("category", ["as" => "sticker.category.index", "uses" => "StickerCategoryController@index"]);
 

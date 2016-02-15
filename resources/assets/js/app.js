@@ -8,7 +8,7 @@ $("#brand h2 span").typed({
     typeSpeed: 0
 });
 
-$(":file").filestyle({
+$(".filestyle").filestyle({
     input: false,
     buttonText: "Çalışmanız",
     buttonName: "btn-danger",
@@ -17,8 +17,8 @@ $(":file").filestyle({
     badge: false
 });
 
-$(":file").change(function(){
-    $(":file").filestyle('buttonText', $(this).val().split('\\').pop());
+$(".filestyle").change(function(){
+    $(".filestyle").filestyle('buttonText', $(this).val().split('\\').pop());
 });
 
 $("#quantity").change(function(){
