@@ -8,7 +8,9 @@
                     <ol class="breadcrumb">
                         <li><a href="{{ route("frontend.home.index") }}"><i class="fa fa-cubes"></i> Stticker</a></li>
                         <li><a href="{{ route("frontend.home.index") }}"><i class="fa fa-home"></i> Anasayfa</a></li>
+                        @if($sticker->category->parent)
                         <li><a href="{{ route("frontend.sticker.category.show", $sticker->category->parent->slug) }}"><i class="{{ $sticker->category->parent->icon }}"></i> {{ $sticker->category->parent->name }}</a></li>
+                        @endif
                         <li><a href="{{ route("frontend.sticker.category.show", $sticker->category->slug) }}">{{ $sticker->category->name }}</a></li>
                         <li class="active">{{ $sticker->name }}</li>
                     </ol>
