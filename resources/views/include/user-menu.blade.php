@@ -31,9 +31,6 @@
                 <a class="nav-link @if(\Request::is("admin/page*")) active @endif" href="{{ route("backend.page.index") }}">Sayfalar</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if(\Request::is("admin/blog*")) active @endif" href="{{ route("backend.blog.index") }}">Blog</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link @if(\Request::is("admin/user*")) active @endif" href="{{ route("backend.user.index") }}">Kullanıcılar</a>
             </li>
             <li class="nav-item">
