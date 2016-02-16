@@ -8,6 +8,9 @@ Route::bind("sticker", function($value, $route) {
 });
 Route::model("user_address", 'App\UserAddress');
 Route::model("order", 'App\Order');
+Route::bind("page", function($value, $route){
+    return \App\Page::where("slug", $value)->firstOrFail();
+});
 
 Route::group(['middleware' => ['web']], function () {
 
@@ -80,6 +83,11 @@ Route::group(['middleware' => ['web']], function () {
         Route::put("order/{order}", ["as" => "order.update", "uses" => "OrderController@update"]);
 
         Route::get("page", ["as" => "page.index", "uses" => "PageController@index"]);
+        Route::get("page/create", ["as" => "page.create", "uses" => "PageController@create"]);
+        Route::post("page", ["as" => "page.store", "uses" => "PageController@store"]);
+        Route::get("page/{page}/edit", ["as" => "page.edit", "uses" => "PageController@edit"]);
+        Route::put("page/{page}", ["as" => "page.update", "uses" => "PageController@update"]);
+        Route::get("page/{page}/delete", ["as" => "page.destroy", "uses" => "PageController@destroy"]);
 
         Route::get("user", ["as" => "user.index", "uses" => "UserController@index"]);
 
