@@ -76,6 +76,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("category/{sticker_category}/delete", ["as" => "sticker.category.destroy", "uses" => "StickerCategoryController@destroy"]);
 
         Route::get("order", ["as" => "order.index", "uses" => "OrderController@index"]);
+        Route::get("order/{order}", ["as" => "order.show", "uses" => "OrderController@show"]);
+        Route::put("order/{order}", ["as" => "order.update", "uses" => "OrderController@update"]);
 
         Route::get("page", ["as" => "page.index", "uses" => "PageController@index"]);
 
