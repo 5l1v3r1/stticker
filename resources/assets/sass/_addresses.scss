@@ -6,4 +6,10 @@
       color: $brand-success;
     }
   }
+  .card-address {
+    .card-text {
+      height: 63px;
+      overflow: hidden;
+    }
+  }
 }

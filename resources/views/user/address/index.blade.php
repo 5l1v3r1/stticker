@@ -11,7 +11,7 @@
                     <div class="row">
                         @foreach($addresses as $address)
                         <div class="col-md-4">
-                            <div class="card card-block text-xs-center">
+                            <div class="card card-block card-address text-xs-center">
                                 <h4 class="card-title">{{ $address->name }}</h4>
                                 <p class="card-text">
                                     {{ str_limit($address->address, 72) }}
