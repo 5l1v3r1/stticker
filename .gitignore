@@ -1,6 +1,7 @@
 ### Stticker Application ###
 public/assets
 public/upload
+storage/settings.json
 
 ### Laravel ###
 .env

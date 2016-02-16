@@ -100,6 +100,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("blog", ["as" => "blog.index", "uses" => "BlogController@index"]);
 
         Route::get("settings", ["as" => "settings", "uses" => "SettingsController@index"]);
+        Route::put("settings", ["as" => "settings", "uses" => "SettingsController@update"]);
     });
 
 });
