@@ -31,7 +31,7 @@
                         </tbody>
                     </table>
 
-                    {!! $stickers->render() !!}
+                    @include('pagination.bootstrap-4', ['paginator' => $stickers])
                 </div>
             </div>
         </div>

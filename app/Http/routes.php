@@ -11,6 +11,7 @@ Route::model("order", 'App\Order');
 Route::bind("page", function($value, $route){
     return \App\Page::where("slug", $value)->firstOrFail();
 });
+Route::model("user", 'App\User');
 
 Route::group(['middleware' => ['web']], function () {
 
@@ -90,6 +91,11 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("page/{page}/delete", ["as" => "page.destroy", "uses" => "PageController@destroy"]);
 
         Route::get("user", ["as" => "user.index", "uses" => "UserController@index"]);
+        Route::get("user/create", ["as" => "user.create", "uses" => "UserController@create"]);
+        Route::post("user", ["as" => "user.store", "uses" => "UserController@store"]);
+        Route::get("user/{user}/edit", ["as" => "user.edit", "uses" => "UserController@edit"]);
+        Route::put("user/{user}", ["as" => "user.update", "uses" => "UserController@update"]);
+        Route::get("user/{user}/delete", ["as" => "user.destroy", "uses" => "UserController@destroy"]);
 
         Route::get("blog", ["as" => "blog.index", "uses" => "BlogController@index"]);
 
