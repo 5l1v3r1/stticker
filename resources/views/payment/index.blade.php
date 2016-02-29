@@ -30,29 +30,29 @@
                     <h3>Sipariş Bilgileri</h3>
                     <div class="row">
                         @if(auth()->check())
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {!! Form::label("my_address", "Adreslerim") !!}
-                                {!! Form::select("my_address", [0 => "- Yeni Adres -"] + \App\UserAddress::lists("name", "id")->toArray(), old("my_address"), ["class" => "form-control", "data-url" => route("frontend.user.address.show")]) !!}
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {!! Form::label("my_address", "Adreslerim") !!}
+                                    {!! Form::select("my_address", [0 => "- Yeni Adres -"] + \App\UserAddress::lists("name", "id")->toArray(), old("my_address"), ["class" => "form-control", "data-url" => route("frontend.user.address.show")]) !!}
+                                </div>
                             </div>
-                        </div>
                         @endif
                         <div class="col-md-12">
                             <div class="form-group">
                                 {!! Form::label("name", "Ad Soyad") !!}
-                                {!! Form::text("name", old("name") ? old("name") : auth()->check() ? auth()->user()->name : null, ["class" => "form-control"]) !!}
+                                {!! Form::text("name", auth()->check() ? auth()->user()->name : null, ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label("email", "E-Posta") !!}
-                                {!! Form::email("email", old("email") ? old("email") : auth()->check() ? auth()->user()->email : null, ["class" => "form-control"]) !!}
+                                {!! Form::email("email", auth()->check() ? auth()->user()->email : null, ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label("phone", "Telefon") !!}
-                                {!! Form::text("phone", old("phone") ? old("phone") : auth()->check() ? auth()->user()->phone : null, ["class" => "form-control", "type" => "phone"]) !!}
+                                {!! Form::text("phone", auth()->check() ? auth()->user()->phone : null, ["class" => "form-control", "type" => "phone"]) !!}
                             </div>
                         </div>
 
@@ -95,12 +95,12 @@
                                 </label>
                             </div>
                         </div>
-                            <div class="col-md-12" style="display: none;" id="addressName">
-                                <div class="form-group">
-                                    {!! Form::label("address_name", "Yeni Adres Başlığı") !!}
-                                    {!! Form::text("address_name", old("address_name"), ["class" => "form-control"]) !!}
-                                </div>
+                        <div class="col-md-12" style="display: none;" id="addressName">
+                            <div class="form-group">
+                                {!! Form::label("address_name", "Yeni Adres Başlığı") !!}
+                                {!! Form::text("address_name", old("address_name"), ["class" => "form-control"]) !!}
                             </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">

@@ -12,6 +12,7 @@ use App\Http\Requests\PaymentCreateRequest;
 use App\Order;
 use App\OrderSticker;
 use App\UserAddress;
+use App\User;
 
 class PaymentController extends FrontendController
 {
@@ -23,6 +24,26 @@ class PaymentController extends FrontendController
     }
 
     public function payment(PaymentCreateRequest $request) {
+
+        if(!auth()->check()){
+            if(User::where("email", $request->get("email"))->count() > 0)
+                return redirect()->back()->withErrors(["email" => "Bu E-postaya ait bir kullanıcı bulunmaktadır. Lütfen giriş yaptıktan sonra siparişinizi tamamlayınız."])->withInput();
+            $user = new User;
+            $user->name = $request->get("name");
+            $user->email = $request->get("email");
+            $password = str_random(10);
+            $user->password = bcrypt($password);
+            $user->phone = $request->get("phone");
+            $user->save();
+
+            \Mail::send('emails.new-user', ['user' => $user, 'password' => $password], function($m) use ($user) {
+                $m->from("no-reply@stticker.com", "Stticker.com");
+                $m->to($user->email, $user->name)->subject("Stticker.com - Üyelik Bilgileriniz");
+            });
+
+            \Auth::login($user);
+        }
+
         $order = new Order;
 
         do {
@@ -38,7 +59,7 @@ class PaymentController extends FrontendController
         $order->notes        = $request->get("notes");
         $order->payment_type = $request->get("payment");
         $order->city_id      = $request->get("city_id");
-        $order->user_id      = auth()->check() ? auth()->user()->id : null;
+        $order->user_id      = auth()->user()->id;
 
         $total = 0;
         foreach(Cart::content() as $sticker) {
@@ -74,6 +95,11 @@ class PaymentController extends FrontendController
         }
 
         Cart::destroy();
+
+        \Mail::send('emails.new-order', ['order' => $order], function($m) use ($order) {
+            $m->from("no-reply@stticker.com", "Stticker.com");
+            $m->to(auth()->user()->email, auth()->user()->name)->subject("Stticker.com - Siparişiniz Oluşturuldu");
+        });
 
         alert()->success("Siparişiniz başarıyla oluşturulmuştur. Ödeme işleminizi gerçekleştirdikten sonra ürünleriniz adresinize kargolanacaktır.");
         return redirect()->route("frontend.user.payment.show", $order->id);
