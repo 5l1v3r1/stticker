@@ -33,6 +33,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("payment", ["as" => "payment.index", "uses" => "PaymentController@index"]);
         Route::post("payment", ["as" => "payment.store", "uses" => "PaymentController@payment"]);
 
+        Route::post("payment/special", ["as" => "payment.special", "uses" => "PaymentController@special"]);
+
         Route::get("page/{page}", ["as" => "page.show", "uses" => "PageController@show"]);
 
         Route::get("contact", ["as" => "contact.index", "uses" => "ContactController@index"]);

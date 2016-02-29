@@ -78,4 +78,9 @@ class PaymentController extends FrontendController
         alert()->success("Siparişiniz başarıyla oluşturulmuştur. Ödeme işleminizi gerçekleştirdikten sonra ürünleriniz adresinize kargolanacaktır.");
         return redirect()->route("frontend.user.payment.show", $order->id);
     }
+
+    public function special(Request $request)
+    {
+        
+    }
 }

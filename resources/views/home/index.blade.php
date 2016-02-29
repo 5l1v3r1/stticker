@@ -18,12 +18,12 @@
                 <div class="col-md-12">
                     <h4 class="text-center">Size Özel Sticker</h4>
                     <h5 class="text-center"><b>Size özel</b> stickerınızı yapabilmemiz için <b>vektörel(svg,ai)</b> formatında çalışmanızı gönderin.</h5>
-                    <form class="form-inline text-center">
+                    {!! Form::open(["route" => "frontend.payment.special", "class" => "form-inline text-center", "files" => true]) !!}
                         <div class="form-group">
-                            <input type="file" class="filestyle" data-input="false">
+                            {!! Form::file("file", ["class" => "filestyle", "data-input" => "false"]) !!}
                         </div>
                         <div class="form-group">
-                            <select class="btn btn-danger btn-lg select2" id="quantity">
+                            <select class="btn btn-danger btn-lg select2" name="quantity" id="quantity">
                                 <option value="1" data-price="10.00">1 A4</option>
                                 <option value="2" data-price="20.00">2 A4</option>
                                 <option value="3" data-price="30.00">3 A4</option>
@@ -227,9 +227,9 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-danger btn-lg" id="send">0.00 <i class="fa fa-try"></i> Siparişi Oluştur</button>
+                            <button class="btn btn-danger btn-lg" id="send" type="submit">10.00 <i class="fa fa-try"></i> Siparişi Oluştur</button>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
