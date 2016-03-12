@@ -7,39 +7,46 @@
                 <div class="col-md-12">
                     <h2 class="text-center">İletişim</h2>
                     <div class="text-justify page-content center-block">
-                        <form>
+                        @if($errors->has())
+                            <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                            </div>
+                        @endif
+                        {!! Form::open(["route" => "frontend.contact.send"]) !!}
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Ad Soyad</label>
-                                        <input type="text" class="form-control form-control-lg">
+                                        {!! Form::label("name", "Ad Soyad") !!}
+                                        {!! Form::text("name", old("name"), ["class" => "form-control form-control-lg"]) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>E-Posta</label>
-                                        <input type="email" class="form-control form-control-lg">
+                                        {!! Form::label("email", "E-Posta") !!}
+                                        {!! Form::email("email", old("email"), ["class" => "form-control form-control-lg"]) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Telefon</label>
-                                        <input type="phone" class="form-control form-control-lg">
+                                        {!! Form::label("phone", "Telefon") !!}
+                                        {!! Form::text("phone", old("phone"), ["class" => "form-control form-control-lg", "type" => "phone"]) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Mesajınız</label>
-                                        <textarea class="form-control form-control-lg" rows="5"></textarea>
+                                        {!! Form::label("message", "Mesajınız") !!}
+                                        {!! Form::textarea("message", old("message"), ["class" => "form-control form-control-lg", "rows" => 5]) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Gönder <i class="fa fa-paper-plane-o"></i></button>
+                                        {!! Form::button("Gönder <i class='fa fa-paper-plane-o'></i>", ["class" => "btn btn-primary btn-lg btn-block", "type" => "submit"]) !!}
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

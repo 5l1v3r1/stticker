@@ -38,6 +38,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("page/{page}", ["as" => "page.show", "uses" => "PageController@show"]);
 
         Route::get("contact", ["as" => "contact.index", "uses" => "ContactController@index"]);
+        Route::post("contact", ["as" => "contact.send", "uses" => "ContactController@send"]);
 
         Route::group(["middleware" => ["auth"]], function(){
             Route::get("user/settings", ["as" => "user.settings", "uses" => "UserController@settings"]);

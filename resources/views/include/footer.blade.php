@@ -4,24 +4,18 @@
             <div class="col-md-12">
                 <nav class="nav nav-inline nav-footer text-center">
                     <div class="nav-item">
-                        <a class="nav-link" href="#">Anasayfa</a>
+                        <a class="nav-link" href="{{ route("frontend.home.index") }}">Anasayfa</a>
                     </div>
-                    <div class="nav-item">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sticker</a>
+                    <div class="nav-item dropup">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route("frontend.sticker.index") }}" role="button" aria-haspopup="true" aria-expanded="false">Sticker</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Yazılım</a>
-                            <a class="dropdown-item" href="#">Film</a>
-                            <a class="dropdown-item" href="#">Dizi</a>
+                            @foreach(\App\StickerCategory::whereNull("parent_id")->get() as $headerCategory)
+                                <a class="dropdown-item" href="{{ route("frontend.sticker.category.show", $headerCategory->slug) }}"><i class="{{ $headerCategory->icon }}"></i> {{ $headerCategory->name }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link" href="#">Çok Satılanlar</a>
-                    </div>
-                    <div class="nav-item">
-                        <a class="nav-link" href="#">Yeni Çıkanlar</a>
-                    </div>
-                    <div class="nav-item">
-                        <a class="nav-link" href="#">İletişim</a>
+                        <a class="nav-link" href="{{ route("frontend.contact.index") }}">İletişim</a>
                     </div>
                 </nav>
             </div>

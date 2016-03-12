@@ -49,6 +49,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        {!! Form::label("contact_send_email", "İletişim Mesajlarının Geleceği E-Posta") !!}
+                                        {!! Form::text("contact_send_email", Settings::get("contact_send_email"), ["class" => "form-control form-control-lg"]) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         {!! Form::button("Kaydet", ["class" => "btn btn-lg btn-primary btn-block", "type" => "submit"]) !!}
                                     </div>
                                 </div>
