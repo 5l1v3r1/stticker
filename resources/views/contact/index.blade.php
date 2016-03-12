@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") İletişim @stop
+
 @section("container")
     <section class="page">
         <div class="container">

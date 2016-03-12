@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") Adres Ekle @stop
+
 @section("container")
     <section>
         <div class="container">

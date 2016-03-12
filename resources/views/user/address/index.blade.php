@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") Adreslerim @stop
+
 @section("container")
     <section class="addresses">
         <div class="container">

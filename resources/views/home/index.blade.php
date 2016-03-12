@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") {{ Settings::get("description") }} @stop
+
 @section("container")
     <section class="brand" id="brand">
         <div class="container">

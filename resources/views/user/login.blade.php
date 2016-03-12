@@ -1,5 +1,7 @@
 @extends("layout.master")
 
+@section("title") Giriş Yap @stop
+
 @section("body")
 
     <nav class="login-top bg-primary">

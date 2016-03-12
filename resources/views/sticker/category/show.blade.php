@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") {{ $category->name }} @stop
+
 @section("container")
     <section>
         <div class="container">

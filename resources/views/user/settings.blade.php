@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") Hesap Ayarları @stop
+
 @section("container")
     <section>
         <div class="container">

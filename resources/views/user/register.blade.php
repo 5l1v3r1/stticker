@@ -1,5 +1,7 @@
 @extends("layout.master")
 
+@section("title") Kayıt Ol @stop
+
 @section("body")
 
     <nav class="register-top bg-primary">

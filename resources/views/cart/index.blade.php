@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") Sepetim @stop
+
 @section("container")
     <section class="cart">
         <div class="container">

@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") {{ $sticker->category->name }} / {{ $sticker->name }} @stop
+
 @section("container")
     <section class="sticker-detail">
         <div class="container">

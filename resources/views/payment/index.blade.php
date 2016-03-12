@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") Sipariş @stop
+
 @section("container")
     <section class="payment">
         <div class="container">

@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") Sipariş: {{ $payment->code }} @stop
+
 @section("container")
     <section>
         <div class="container">

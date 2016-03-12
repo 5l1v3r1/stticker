@@ -1,5 +1,7 @@
 @extends("layout.page")
 
+@section("title") {{ $address->name }} Adresini Düzenle @stop
+
 @section("container")
     <section>
         <div class="container">
