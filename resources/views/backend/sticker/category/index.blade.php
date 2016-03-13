@@ -8,7 +8,7 @@
                     @include("include.user-menu")
                 </div>
                 <div class="col-md-9 main">
-                    <p class="text-xs-right"><a href="{{ route("backend.sticker.category.create") }}" class="btn btn-sm btn-success-outline">Yeni Sticker Ekle</a></p>
+                    <p class="text-xs-right"><a href="{{ route("backend.sticker.category.create") }}" class="btn btn-sm btn-success-outline">Yeni Kategori Ekle</a></p>
                     <table class="table table-hover table-striped table-middle">
                         <thead class="thead-inverse">
                         <tr>

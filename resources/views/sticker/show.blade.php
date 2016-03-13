@@ -31,12 +31,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 {!! Form::label("size", "Boyut", ["class" => "input-group-addon bg-primary"]) !!}
-                                {!! Form::select("size", [
-                                    "small"  => "Küçük (3.0'' x 4.0'')",
-                                    "middle" => "Orta (4.1'' x 5.5'')",
-                                    "big"    => "Büyük (6.4'' x 8.5'')",
-                                    "extra_big" => "Çok Büyük (10.5'' x 14.0'')",
-                                ], old("size"), ["class" => "form-control"]) !!}
+                                {!! Form::select("size", $sticker->category->parent->sizes->lists("name", "id"), old("size"), ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="form-group">

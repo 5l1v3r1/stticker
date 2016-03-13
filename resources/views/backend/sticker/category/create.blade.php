@@ -49,6 +49,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        {!! Form::label("sizes[]", "Boyutlar") !!}
+                                        {!! Form::select("sizes[]", \App\StickerSize::lists("name", "id"), old("sizes"), ["class" => "form-control form-control-lg", "multiple"]) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         {!! Form::button("Kaydet", ["class" => "btn btn-lg btn-primary btn-block", "type" => "submit"]) !!}
                                     </div>
                                 </div>

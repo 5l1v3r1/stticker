@@ -12,6 +12,7 @@ Route::bind("page", function($value, $route){
     return \App\Page::where("slug", $value)->firstOrFail();
 });
 Route::model("user", 'App\User');
+Route::model("sticker_size", 'App\StickerSize');
 
 Route::group(['middleware' => ['web']], function () {
 
@@ -81,6 +82,13 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("category/{sticker_category}/edit", ["as" => "sticker.category.edit", "uses" => "StickerCategoryController@edit"]);
         Route::put("category/{sticker_category}", ["as" => "sticker.category.update", "uses" => "StickerCategoryController@update"]);
         Route::get("category/{sticker_category}/delete", ["as" => "sticker.category.destroy", "uses" => "StickerCategoryController@destroy"]);
+
+        Route::get("size", ["as" => "sticker.size.index", "uses" => "StickerSizeController@index"]);
+        Route::get("size/create", ["as" => "sticker.size.create", "uses" => "StickerSizeController@create"]);
+        Route::post("size", ["as" => "sticker.size.store", "uses" => "StickerSizeController@store"]);
+        Route::get("size/{sticker_size}/edit", ["as" => "sticker.size.edit", "uses" => "StickerSizeController@edit"]);
+        Route::put("size/{sticker_size}", ["as" => "sticker.size.update", "uses" => "StickerSizeController@update"]);
+        Route::get("size/{sticker_size}/delete", ["as" => "sticker.size.destroy", "uses" => "StickerSizeController@destroy"]);
 
         Route::get("order", ["as" => "order.index", "uses" => "OrderController@index"]);
         Route::get("order/{order}", ["as" => "order.show", "uses" => "OrderController@show"]);

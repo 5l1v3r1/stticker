@@ -26,4 +26,9 @@ class StickerCategory extends Model
     {
         return $this->hasMany('App\StickerCategory', 'parent_id');
     }
+
+    public function sizes()
+    {
+        return $this->belongsToMany('App\StickerSize');
+    }
 }

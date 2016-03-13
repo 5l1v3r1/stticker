@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <h3><a href="{{ route("frontend.user.settings") }}">{{ auth()->user()->fullname }}</a></h3>
+    <h3><a href="{{ route("frontend.user.settings") }}">Hesap</a></h3>
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link @if(\Request::is("user/settings")) active @endif" href="{{ route("frontend.user.settings") }}">Hesap Ayarları</a>
@@ -23,6 +23,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link @if(\Request::is("admin/category*")) active @endif" href="{{ route("backend.sticker.category.index") }}">Kategoriler</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if(\Request::is("admin/size*")) active @endif" href="{{ route("backend.sticker.size.index") }}">Boyutlar</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link @if(\Request::is("admin/order*")) active @endif" href="{{ route("backend.order.index") }}">Siparişler</a>

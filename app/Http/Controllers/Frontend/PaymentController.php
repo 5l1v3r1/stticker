@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Sticker;
+use App\StickerSize;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -70,13 +71,15 @@ class PaymentController extends FrontendController
 
         $order->save();
 
+        $size = StickerSize::find($sticker->options->size);
+
         foreach(Cart::content() as $sticker) {
             $s = Sticker::where("slug", $sticker->options->sticker)->first();
             $product             = new OrderSticker;
             $product->order_id   = $order->id;
             $product->sticker_id = $s->id;
             $product->quantity   = $sticker->qty;
-            $product->size       = $sticker->options->size;
+            $product->size = $size->name;
             $product->name       = $s->name;
             $product->image      = $s->image;
             $product->price      = $sticker->price * $sticker->qty;

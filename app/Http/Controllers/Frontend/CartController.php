@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\StickerSize;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -28,17 +29,10 @@ class CartController extends FrontendController
     }
 
     public function add(CartAddRequest $request, Sticker $sticker) {
-        if($request->get("size") == "small") {
-            $price = 1.00;
-        } elseif($request->get("size") == "middle") {
-            $price = 1.50;
-        } elseif($request->get("size") == "big") {
-            $price = 2.00;
-        } elseif($request->get("size") == "extra_big") {
-            $price = 2.50;
-        }
+        $size = StickerSize::find($request->get("size"));
+        $price = $size->price;
         Cart::add($request->get("size")."-".$sticker->slug, $sticker->name, $request->get("quantity"), $price, [
-            'size'     => $request->get("size"),
+            'size'     => $size->id,
             "sticker"  => $sticker->slug,
         ]);
         return Cart::content();

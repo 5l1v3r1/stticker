@@ -37,6 +37,8 @@ class StickerCategoryController extends BackendController
         $category->icon      = $request->get("icon");
         $category->save();
 
+        $category->sizes()->attach($request->get("sizes"));
+
         alert()->success("Kategori başarıyla kaydedildi!");
         return redirect()->route("backend.sticker.category.index");
     }
@@ -55,6 +57,8 @@ class StickerCategoryController extends BackendController
         $category->slug      = $request->get("slug");
         $category->icon      = $request->get("icon");
         $category->save();
+
+        $category->sizes()->sync($request->get("sizes"));
 
         alert()->success("Kategori başarıyla güncellendi!");
         return redirect()->route("backend.sticker.category.edit", $category->slug);

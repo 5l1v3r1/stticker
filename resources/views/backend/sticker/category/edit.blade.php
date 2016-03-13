@@ -50,6 +50,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        {!! Form::label("sizes[]", "Boyutlar") !!}
+                                        {!! Form::select("sizes[]", \App\StickerSize::lists("name", "id"), $category->sizes->lists('id')->toArray(), ["class" => "form-control form-control-lg", "multiple"]) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         {!! Form::button("Güncelle", ["class" => "btn btn-lg btn-primary btn-block", "type" => "submit"]) !!}
                                     </div>
                                 </div>

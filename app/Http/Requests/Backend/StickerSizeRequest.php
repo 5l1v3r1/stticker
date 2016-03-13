@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Backend;
 
 use App\Http\Requests\Request;
 
-class CartAddRequest extends Request
+class StickerSizeRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class CartAddRequest extends Request
     public function rules()
     {
         return [
-            "size"     => "required|exists:sticker_sizes,id",
-            "quantity" => "required|numeric"
+            "name"  => "required",
+            "price" => "required"
         ];
     }
 }

@@ -120,23 +120,9 @@
                                 <tbody>
                                 @foreach($cart as $item)
                                     <?php $sticker = \App\Sticker::where("slug", $item->options->sticker)->first(); ?>
-                                    <?php
-                                    if($item->options->size == "small") {
-                                        $number_price = 1.00;
-                                        $size = "3.00'' x 4.00''";
-                                    } elseif($item->options->size == "middle") {
-                                        $number_price = 1.50;
-                                        $size = "4.1'' x 5.5''";
-                                    } elseif($item->options->size == "big") {
-                                        $number_price = 2.00;
-                                        $size = "6.4'' x 8.5''";
-                                    } elseif($item->options->size == "extra_big") {
-                                        $number_price = 2.50;
-                                        $size = "10.5'' x 14.0''";
-                                    }
-                                    ?>
+                                    <?php $size = \App\StickerSize::find($item->options->size); ?>
                                 <tr>
-                                    <td>{{ $sticker->name }}({{ $size }}) <b>x {{ $item->qty }}</b></td>
+                                    <td>{{ $sticker->name }}({{ $size->name }}) <b>x {{ $item->qty }}</b></td>
                                     <td>{{ number_format($item->price*$item->qty, 2) }} <i class="fa fa-try"></i></td>
                                     <td><a href="{{ route("frontend.cart.remove", $item->rowid) }}" class="btn btn-secondary-outline btn-sm"><i class="fa fa-trash-o"></i></a></td>
                                 </tr>

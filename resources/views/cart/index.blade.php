@@ -51,36 +51,18 @@
                             <tbody>
                             @foreach($cart as $item)
                                 <?php $sticker = \App\Sticker::where("slug", $item->options->sticker)->first(); ?>
-                                <?php
-                                if($item->options->size == "small") {
-                                    $number_price = 1.00;
-                                } elseif($item->options->size == "middle") {
-                                    $number_price = 1.50;
-                                } elseif($item->options->size == "big") {
-                                    $number_price = 2.00;
-                                } elseif($item->options->size == "extra_big") {
-                                    $number_price = 2.50;
-                                }
-                                ?>
+                                <?php $size = \App\StickerSize::find($item->options->size); ?>
                                 <tr>
                                     <td class="hidden-sm-down" width="10%"><img src="{{ asset($sticker->image) }}" class="img-fluid img-thumbnail"></td>
                                     <td>{{ $sticker->name }}</td>
                                     <td>
-                                        @if($item->options->size == "small")
-                                            3.00'' x 4.00''
-                                        @elseif($item->options->size == "middle")
-                                            4.1'' x 5.5''
-                                        @elseif($item->options->size == "big")
-                                            6.4'' x 8.5''
-                                        @elseif($item->options->size == "extra_big")
-                                            10.5'' x 14.0''
-                                        @endif
+                                        {{ $size->name }}
                                     </td>
                                     <td class="quantity">
                                         {!! Form::number("cart[".$item->rowid."]", $item->qty, ["class" => "form-control"]) !!}
                                     </td>
                                     <td class="text-xs-center">
-                                        {{ number_format($number_price, 2) }} <i class="fa fa-try"></i>
+                                        {{ number_format($size->price, 2) }} <i class="fa fa-try"></i>
                                     </td>
                                     <td class="text-xs-center">
                                         {{ number_format($item->price*$item->qty, 2) }} <i class="fa fa-try"></i>
