@@ -10,14 +10,14 @@
                     @include("include.sidebar")
                 </div>
                 <div class="col-md-9 main">
-                    <form class="search">
+                    {!! Form::open(["route" => ["frontend.sticker.category.search", $category->slug], "class" => "search", "method" => "GET"]) !!}
                         <div class="input-group input-group-lg">
-                            <input type="text" class="form-control" placeholder="Sticker Arayın...">
+                            {!! Form::text("query", old("query"), ["class" => "form-control", "placeholder" => "Sticker Arayın..."]) !!}
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary text-primary" type="button"><i class="fa fa-search"></i></button>
+                                {!! Form::button("<i class='fa fa-search'></i>", ["class" => "btn btn-secondary text-primary", "type" => "button"] ) !!}
                             </span>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
 
                     <div class="row">
                         @foreach($stickers as $sticker)

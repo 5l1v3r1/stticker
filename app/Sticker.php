@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Sofa\Eloquence\Eloquence;
 
 class Sticker extends Model
 {
+    use Eloquence;
+
+    protected $searchableColumns = ['name'];
+
     public function category()
     {
         return $this->belongsTo('App\StickerCategory', 'sticker_category_id');
