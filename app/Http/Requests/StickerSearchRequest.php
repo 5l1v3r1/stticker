@@ -4,10 +4,10 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class StickerCategorySearchRequest extends Request
+class StickerSearchRequest extends Request
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if tStickerCategorySearchRequesthe user is authorized to make this request.
      *
      * @return bool
      */

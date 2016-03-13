@@ -8,21 +8,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\StickerCategory;
-use App\Http\Requests\StickerCategorySearchRequest;
 
 class StickerCategoryController extends FrontendController
 {
 
     public function show(StickerCategory $category) {
         $stickers = $category->stickers()->orderBy("name", "ASC")->paginate(16);
-        return view("sticker.category.show", [
-            "category" => $category,
-            "stickers" => $stickers
-        ]);
-    }
-
-    public function search(StickerCategorySearchRequest $request, StickerCategory $category) {
-        $stickers = $category->stickers()->search($request->get("query"))->paginate(16);
         return view("sticker.category.show", [
             "category" => $category,
             "stickers" => $stickers

@@ -23,7 +23,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("sticker", ["as" => "sticker.index", "uses" => "StickerController@index"]);
         Route::get("sticker/{sticker}", ["as" => "sticker.show", "uses" => "StickerController@show"]);
         Route::get("sticker-category/{sticker_category}", ["as" => "sticker.category.show", "uses" => "StickerCategoryController@show"]);
-        Route::get("sticker-category/{sticker_category}/search", ["as" => "sticker.category.search", "uses" => "StickerCategoryController@search"]);
+
+        Route::get("search", ["as" => "sticker.search", "uses" => "StickerController@search"]);
 
         Route::get("cart", ["as" => "cart.index", "uses" => "CartController@index"]);
         Route::get("cart/content", ["as" => "cart.content", "uses" => "CartController@content"]);

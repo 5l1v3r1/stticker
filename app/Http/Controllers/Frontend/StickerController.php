@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Sticker;
+use App\Http\Requests\StickerSearchRequest;
 
 class StickerController extends FrontendController
 {
@@ -21,6 +22,14 @@ class StickerController extends FrontendController
         return view("sticker.show", [
             "sticker" => $sticker,
             "sizes"   => $sizes,
+        ]);
+    }
+
+    public function search(StickerSearchRequest $request) {
+        $stickers = Sticker::search($request->get("query"))->paginate(16);
+        return view("sticker.search", [
+            "query" => $request->get("query"),
+            "stickers" => $stickers
         ]);
     }
 }

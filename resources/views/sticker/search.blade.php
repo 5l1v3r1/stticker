@@ -1,6 +1,6 @@
 @extends("layout.page")
 
-@section("title") {{ $category->name }} @stop
+@section("title") '{{ $query }}' Arama Sonuçları @stop
 
 @section("container")
     <section>
@@ -11,12 +11,12 @@
                 </div>
                 <div class="col-md-9 main">
                     {!! Form::open(["route" => "frontend.sticker.search", "class" => "search", "method" => "GET"]) !!}
-                        <div class="input-group input-group-lg">
-                            {!! Form::text("query", old("query"), ["class" => "form-control", "placeholder" => "Sticker Arayın..."]) !!}
-                            <span class="input-group-btn">
+                    <div class="input-group input-group-lg">
+                        {!! Form::text("query", $query, ["class" => "form-control", "placeholder" => "Sticker Arayın..."]) !!}
+                        <span class="input-group-btn">
                                 {!! Form::button("<i class='fa fa-search'></i>", ["class" => "btn btn-secondary text-primary", "type" => "button"] ) !!}
                             </span>
-                        </div>
+                    </div>
                     {!! Form::close() !!}
 
                     <div class="row">
