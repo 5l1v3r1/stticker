@@ -10,6 +10,8 @@ use App\Http\Controllers\Frontend\FrontendController;
 class PageController extends FrontendController
 {
     public function show($page) {
-        return view("page.show");
+        return view("page.show", [
+            "page" => $page,
+        ]);
     }
 }

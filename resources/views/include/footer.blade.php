@@ -6,6 +6,11 @@
                     <div class="nav-item">
                         <a class="nav-link" href="{{ route("frontend.home.index") }}">Anasayfa</a>
                     </div>
+                    @foreach(\App\Page::all() as $page)
+                    <div class="nav-item">
+                        <a class="nav-link" href="{{ route("frontend.page.show", $page->slug) }}">{{ $page->name }}</a>
+                    </div>
+                    @endforeach
                     <div class="nav-item dropup">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route("frontend.sticker.index") }}" role="button" aria-haspopup="true" aria-expanded="false">Sticker</a>
                         <div class="dropdown-menu">
