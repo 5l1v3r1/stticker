@@ -12,7 +12,7 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        $jsonFile = storage_path("app/cities.json");
+        $jsonFile = __DIR__."/cities.json";
         $json     = \File::get($jsonFile);
         $cities   = json_decode($json);
 
