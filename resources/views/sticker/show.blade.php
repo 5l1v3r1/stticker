@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 {!! Form::label("size", "Boyut", ["class" => "input-group-addon bg-primary"]) !!}
-                                {!! Form::select("size", $sticker->category->parent->sizes->lists("name", "id"), old("size"), ["class" => "form-control"]) !!}
+                                {!! Form::select("size", $sizes, old("size"), ["class" => "form-control"]) !!}
                             </div>
                         </div>
                         <div class="form-group">
