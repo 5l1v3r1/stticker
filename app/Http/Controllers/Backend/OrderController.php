@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Order;
+use App\OrderSticker;
 use App\Http\Requests\Backend\OrderStatusRequest;
 
 class OrderController extends BackendController
@@ -29,5 +30,10 @@ class OrderController extends BackendController
 
         alert()->success("Sipariş durumu değiştirildi!");
         return redirect()->route("backend.order.show", $order->id);
+    }
+
+    public function download(Order $order, OrderSticker $sticker)
+    {
+        return response()->download(storage_path("app/special/".$sticker->file));
     }
 }

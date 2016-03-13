@@ -13,6 +13,7 @@ Route::bind("page", function($value, $route){
 });
 Route::model("user", 'App\User');
 Route::model("sticker_size", 'App\StickerSize');
+Route::model("order_sticker", 'App\OrderSticker');
 
 Route::group(['middleware' => ['web']], function () {
 
@@ -95,6 +96,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("order", ["as" => "order.index", "uses" => "OrderController@index"]);
         Route::get("order/{order}", ["as" => "order.show", "uses" => "OrderController@show"]);
         Route::put("order/{order}", ["as" => "order.update", "uses" => "OrderController@update"]);
+        Route::get("order/{order}/{order_sticker}/download", ["as" => "order.download", "uses" => "OrderController@download"]);
 
         Route::get("page", ["as" => "page.index", "uses" => "PageController@index"]);
         Route::get("page/create", ["as" => "page.create", "uses" => "PageController@create"]);

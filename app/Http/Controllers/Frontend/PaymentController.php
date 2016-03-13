@@ -83,6 +83,7 @@ class PaymentController extends FrontendController
                 $product->image      = null;
                 $product->price      = $sticker->price;
                 $product->is_special = true;
+                $product->file       = $sticker->options->file;
                 $product->save();
             } else {
                 $size = StickerSize::find($sticker->options->size);
