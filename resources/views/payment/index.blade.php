@@ -119,13 +119,21 @@
                                 </thead>
                                 <tbody>
                                 @foreach($cart as $item)
-                                    <?php $sticker = \App\Sticker::where("slug", $item->options->sticker)->first(); ?>
-                                    <?php $size = \App\StickerSize::find($item->options->size); ?>
-                                <tr>
-                                    <td>{{ $sticker->name }}({{ $size->name }}) <b>x {{ $item->qty }}</b></td>
-                                    <td>{{ number_format($item->price*$item->qty, 2) }} <i class="fa fa-try"></i></td>
-                                    <td><a href="{{ route("frontend.cart.remove", $item->rowid) }}" class="btn btn-secondary-outline btn-sm"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
+                                    @if($item->options->file)
+                                        <tr>
+                                            <td>Özel Tasarım Sticker - {{ $item->options->size }} A4</td>
+                                            <td>{{ number_format($item->price, 2) }} <i class="fa fa-try"></i></td>
+                                            <td><a href="{{ route("frontend.cart.remove", $item->rowid) }}" class="btn btn-secondary-outline btn-sm"><i class="fa fa-trash-o"></i></a></td>
+                                        </tr>
+                                    @else
+                                        <?php $sticker = \App\Sticker::where("slug", $item->options->sticker)->first(); ?>
+                                        <?php $size = \App\StickerSize::find($item->options->size); ?>
+                                        <tr>
+                                            <td>{{ $sticker->name }}({{ $size->name }}) <b>x {{ $item->qty }}</b></td>
+                                            <td>{{ number_format($item->price*$item->qty, 2) }} <i class="fa fa-try"></i></td>
+                                            <td><a href="{{ route("frontend.cart.remove", $item->rowid) }}" class="btn btn-secondary-outline btn-sm"><i class="fa fa-trash-o"></i></a></td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>

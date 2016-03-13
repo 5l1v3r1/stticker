@@ -50,27 +50,49 @@
                             </thead>
                             <tbody>
                             @foreach($cart as $item)
-                                <?php $sticker = \App\Sticker::where("slug", $item->options->sticker)->first(); ?>
-                                <?php $size = \App\StickerSize::find($item->options->size); ?>
-                                <tr>
-                                    <td class="hidden-sm-down" width="10%"><img src="{{ asset($sticker->image) }}" class="img-fluid img-thumbnail"></td>
-                                    <td>{{ $sticker->name }}</td>
-                                    <td>
-                                        {{ $size->name }}
-                                    </td>
-                                    <td class="quantity">
-                                        {!! Form::number("cart[".$item->rowid."]", $item->qty, ["class" => "form-control"]) !!}
-                                    </td>
-                                    <td class="text-xs-center">
-                                        {{ number_format($size->price, 2) }} <i class="fa fa-try"></i>
-                                    </td>
-                                    <td class="text-xs-center">
-                                        {{ number_format($item->price*$item->qty, 2) }} <i class="fa fa-try"></i>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route("frontend.cart.remove", $item->rowid) }}" class="btn btn-danger btn-sm btn-cart-delete"><i class="fa fa-trash-o"></i></a>
-                                    </td>
-                                </tr>
+                                @if($item->options->file)
+                                    <tr>
+                                        <td class="hidden-sm-down" width="10%"></td>
+                                        <td>Özel Tasarım Sticker</td>
+                                        <td>
+                                            {{ $item->options->size }} A4
+                                        </td>
+                                        <td class="quantity">
+                                            {!! Form::hidden("cart[".$item->rowid."]", $item->qty) !!}
+                                        </td>
+                                        <td class="text-xs-center">
+                                            {{ number_format($item->price, 2) }} <i class="fa fa-try"></i>
+                                        </td>
+                                        <td class="text-xs-center">
+                                            {{ number_format($item->price, 2) }} <i class="fa fa-try"></i>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route("frontend.cart.remove", $item->rowid) }}" class="btn btn-danger btn-sm btn-cart-delete"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                @else
+                                    <?php $sticker = \App\Sticker::where("slug", $item->options->sticker)->first(); ?>
+                                    <?php $size = \App\StickerSize::find($item->options->size); ?>
+                                    <tr>
+                                        <td class="hidden-sm-down" width="10%"><img src="{{ asset($sticker->image) }}" class="img-fluid img-thumbnail"></td>
+                                        <td>{{ $sticker->name }}</td>
+                                        <td>
+                                            {{ $size->name }}
+                                        </td>
+                                        <td class="quantity">
+                                            {!! Form::number("cart[".$item->rowid."]", $item->qty, ["class" => "form-control"]) !!}
+                                        </td>
+                                        <td class="text-xs-center">
+                                            {{ number_format($size->price, 2) }} <i class="fa fa-try"></i>
+                                        </td>
+                                        <td class="text-xs-center">
+                                            {{ number_format($item->price*$item->qty, 2) }} <i class="fa fa-try"></i>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route("frontend.cart.remove", $item->rowid) }}" class="btn btn-danger btn-sm btn-cart-delete"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

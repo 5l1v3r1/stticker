@@ -76,14 +76,25 @@
                         </thead>
                         <tbody>
                         @foreach($payment->stickers as $sticker)
-                        <tr>
-                            <td width="10%"><img src="{{ asset($sticker->image) }}" class="img-fluid img-thumbnail"></td>
-                            <td>{{ $sticker->name }}</td>
-                            <td>{{ $sticker->size }}</td>
-                            <td class="quantity">{{ $sticker->quantity }} Adet</td>
-                            <td class="text-xs-center">{{ number_format($sticker->price/$sticker->quantity, 2) }} <i class="fa fa-try"></i></td>
-                            <td class="text-xs-center">{{ number_format($sticker->price, 2) }} <i class="fa fa-try"></i></td>
-                        </tr>
+                            @if($sticker->is_special)
+                                <tr>
+                                    <td width="10%"></td>
+                                    <td>{{ $sticker->name }}</td>
+                                    <td>{{ $sticker->size }} A4</td>
+                                    <td class="quantity">{{ $sticker->quantity }} Adet</td>
+                                    <td class="text-xs-center">{{ number_format($sticker->price/$sticker->quantity, 2) }} <i class="fa fa-try"></i></td>
+                                    <td class="text-xs-center">{{ number_format($sticker->price, 2) }} <i class="fa fa-try"></i></td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td width="10%"><img src="{{ asset($sticker->image) }}" class="img-fluid img-thumbnail"></td>
+                                    <td>{{ $sticker->name }}</td>
+                                    <td>{{ $sticker->size }}</td>
+                                    <td class="quantity">{{ $sticker->quantity }} Adet</td>
+                                    <td class="text-xs-center">{{ number_format($sticker->price/$sticker->quantity, 2) }} <i class="fa fa-try"></i></td>
+                                    <td class="text-xs-center">{{ number_format($sticker->price, 2) }} <i class="fa fa-try"></i></td>
+                                </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>

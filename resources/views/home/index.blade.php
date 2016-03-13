@@ -21,6 +21,7 @@
                     <h4 class="text-center">Size Özel Sticker</h4>
                     <h5 class="text-center"><b>Size özel</b> stickerınızı yapabilmemiz için <b>vektörel(svg,ai)</b> formatında çalışmanızı gönderin.</h5>
                     {!! Form::open(["route" => "frontend.payment.special", "class" => "form-inline text-center", "files" => true]) !!}
+                    {!! Form::hidden("price", "10.00", ["id" => "priceHidden"]) !!}
                         <div class="form-group">
                             {!! Form::file("file", ["class" => "filestyle", "data-input" => "false"]) !!}
                         </div>

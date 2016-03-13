@@ -23,6 +23,7 @@ $(".filestyle").change(function(){
 
 $("#quantity").change(function(){
     var price = $(this).find(":selected").data("price");
+    $("#priceHidden").val(price);
     var total = price;
     $("#send").html(total + ' <i class="fa fa-try"></i> Siparişi Oluştur');
 });

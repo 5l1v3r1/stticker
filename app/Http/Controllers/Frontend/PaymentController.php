@@ -14,6 +14,7 @@ use App\Order;
 use App\OrderSticker;
 use App\UserAddress;
 use App\User;
+use App\Http\Requests\SpecialStickerRequest;
 
 class PaymentController extends FrontendController
 {
@@ -71,19 +72,32 @@ class PaymentController extends FrontendController
 
         $order->save();
 
-        $size = StickerSize::find($sticker->options->size);
-
         foreach(Cart::content() as $sticker) {
-            $s = Sticker::where("slug", $sticker->options->sticker)->first();
-            $product             = new OrderSticker;
-            $product->order_id   = $order->id;
-            $product->sticker_id = $s->id;
-            $product->quantity   = $sticker->qty;
-            $product->size = $size->name;
-            $product->name       = $s->name;
-            $product->image      = $s->image;
-            $product->price      = $sticker->price * $sticker->qty;
-            $product->save();
+            if($sticker->options->file) {
+                $product             = new OrderSticker;
+                $product->order_id   = $order->id;
+                $product->sticker_id = null;
+                $product->quantity   = $sticker->qty;
+                $product->size = $sticker->options->size;
+                $product->name       = "Özel Tasarım";
+                $product->image      = null;
+                $product->price      = $sticker->price;
+                $product->is_special = true;
+                $product->save();
+            } else {
+                $size = StickerSize::find($sticker->options->size);
+                $s = Sticker::where("slug", $sticker->options->sticker)->first();
+                $product             = new OrderSticker;
+                $product->order_id   = $order->id;
+                $product->sticker_id = $s->id;
+                $product->quantity   = $sticker->qty;
+                $product->size = $size->name;
+                $product->name       = $s->name;
+                $product->image      = $s->image;
+                $product->price      = $sticker->price * $sticker->qty;
+                $product->is_special = false;
+                $product->save();
+            }
         }
 
         if($request->has("remember")){
@@ -108,8 +122,19 @@ class PaymentController extends FrontendController
         return redirect()->route("frontend.user.payment.show", $order->id);
     }
 
-    public function special(Request $request)
+    public function special(SpecialStickerRequest $request)
     {
-        
+        do {
+            $filename = str_slug($request->file("file")->getClientOriginalName())."-".str_random(3).".".$request->file("file")->getClientOriginalExtension();
+        } while(\File::exists(storage_path("app/special/".$filename)));
+        $request->file("file")->move(storage_path("app/special"), $filename);
+
+        Cart::add(str_random(9), "Özel Tasarım Sticker", 1, $request->get("price"), [
+            "file" => $filename,
+            "size" => $request->get("quantity")
+        ]);
+
+        alert()->success("Özel tasarım sticker sepete eklendi.");
+        return redirect()->route("frontend.cart.index");
     }
 }
