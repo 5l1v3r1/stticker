@@ -2,6 +2,8 @@
 
 @section("title") {{ $sticker->category->name }} / {{ $sticker->name }} @stop
 
+@section("og_image"){{ asset($sticker->image) }}@stop
+
 @section("container")
     <section class="sticker-detail">
         <div class="container">

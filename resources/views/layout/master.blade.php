@@ -8,6 +8,12 @@
 
     <link rel="stylesheet" href="{{ asset("assets/css/app.css") }}">
 
+    <meta property="og:image" content="@yield('og_image', asset("assets/images/logo.png"))"/>
+    <meta property="og:title" content="{{ Settings::get("name") }} - @yield('title', Settings::get("description"))"/>
+    <meta property="og:url" content="{{ Request::url() }}"/>
+    <meta property="og:site_name" content="{{ Settings::get("name") }}"/>
+    <meta property="og:type" content="website"/>
+
     <script src="{{ asset("assets/js/pre.js") }}"></script>
 </head>
 <body>
