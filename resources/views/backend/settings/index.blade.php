@@ -1,5 +1,12 @@
 @extends("layout.page")
 
+@section("scripts")
+    <script src="{{ asset("assets/plugins/ckeditor/ckeditor.js") }}"></script>
+    <script>
+        CKEDITOR.replace('bank');
+    </script>
+@stop
+
 @section("container")
     <section>
         <div class="container">
@@ -44,7 +51,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {!! Form::label("bank", "Banka Bilgileri") !!}
-                                        {!! Form::textarea("bank", Settings::get("bank"), ["class" => "form-control form-control-lg"]) !!}
+                                        {!! Form::textarea("bank", Settings::get("bank"), ["id" => "bank", "class" => "form-control form-control-lg"]) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-12">

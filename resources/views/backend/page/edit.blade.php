@@ -1,5 +1,12 @@
 @extends("layout.page")
 
+@section("scripts")
+    <script src="{{ asset("assets/plugins/ckeditor/ckeditor.js") }}"></script>
+    <script>
+        CKEDITOR.replace('content');
+    </script>
+@stop
+
 @section("container")
     <section>
         <div class="container">
@@ -45,7 +52,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {!! Form::label("content", "Sayfa İçerik") !!}
-                                        {!! Form::textarea("content", $page->content, ["class" => "form-control form-control-lg"]) !!}
+                                        {!! Form::textarea("content", $page->content, ["id" => "content", "class" => "form-control form-control-lg"]) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-12">
