@@ -17,8 +17,14 @@ class StickerController extends FrontendController
 
     public function show(Sticker $sticker) {
         $sizes = [];
-        foreach($sticker->category->parent->sizes as $size)
-            $sizes[$size->id] = $size->name." - ".number_format($size->price, 2)." TL";
+        if($sticker->category->parent){
+        	foreach($sticker->category->parent->sizes as $size)
+            		$sizes[$size->id] = $size->name." - ".number_format($size->price, 2)." TL";
+	} else {
+	        foreach($sticker->category->sizes as $size)
+        		$sizes[$size->id] = $size->name." - ".number_format($size->price, 2)." TL";
+
+	}
         return view("sticker.show", [
             "sticker" => $sticker,
             "sizes"   => $sizes,
