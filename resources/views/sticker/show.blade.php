@@ -49,8 +49,7 @@
                             </div>
                             <div class="card-block">
                                 <p class="text-center">
-                                    2-3 gün kargo süresi (<b>Express</b>)<br>
-                                    3-5 gün kargo süresi (<b>Normal</b>)
+                                    <b>3 - 5 </b> iş günü kargo süresi
                                 </p>
                             </div>
                         </div>

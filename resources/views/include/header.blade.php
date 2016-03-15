@@ -4,7 +4,7 @@
             <div class="col-md-4">
                 <h1 class="logo text-md-left text-lg-left text-sm-center text-xs-center">
                     <a href="{{ route("frontend.home.index") }}">
-                        <i class="fa fa-cubes"></i> Stticker
+                        <img src="{{ asset("assets/images/logo.png") }}">
                     </a>
                 </h1>
             </div>

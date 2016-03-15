@@ -14,6 +14,30 @@
         </div>
     </section>
 
+    <section class="popular-sticker">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header">
+                        <h4 class="text-center">Stickerlar</h4>
+                        <h5 class="text-center">İlginizi çekebilecek stickerlar</h5>
+                    </div>
+                </div>
+                @foreach($stickers as $sticker)
+                    <div class="col-md-2">
+                        <a href="{{ route("frontend.sticker.show", $sticker->slug) }}" class="card card-inverse sticker" title="{{ $sticker->name }}">
+                            <img style="display: none;" class="card-img-top img-fluid" src="{{ "http://stticker.com/" . $sticker->image }}" alt="{{ $sticker->name }}">
+                            <div class="img" style="background-image:url({{ "http://stticker.com/" . $sticker->image }});"></div>
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-center">{{ $sticker->name }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     <section class="stand">
         <div class="container">
             <div class="row">

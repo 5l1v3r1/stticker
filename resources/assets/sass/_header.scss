@@ -3,7 +3,6 @@ header {
   border-bottom: 1px solid $gray-lighter;
 
   .logo {
-    padding: 20px 0;
     color: $brand-primary;
     font-size: $font-size-h4;
     margin: 0;
@@ -16,7 +15,7 @@ header {
       }
 
       > img {
-        height: 30px;
+        height: 70px;
         margin-right: 10px;
       }
     }
