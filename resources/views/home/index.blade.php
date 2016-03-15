@@ -26,8 +26,8 @@
                 @foreach($stickers as $sticker)
                     <div class="col-md-2">
                         <a href="{{ route("frontend.sticker.show", $sticker->slug) }}" class="card card-inverse sticker" title="{{ $sticker->name }}">
-                            <img style="display: none;" class="card-img-top img-fluid" src="{{ "http://stticker.com/" . $sticker->image }}" alt="{{ $sticker->name }}">
-                            <div class="img" style="background-image:url({{ "http://stticker.com/" . $sticker->image }});"></div>
+                            <img style="display: none;" class="card-img-top img-fluid" src="{{ asset($sticker->image) }}" alt="{{ $sticker->name }}">
+                            <div class="img" style="background-image:url({{ asset($sticker->image) }});"></div>
                             <div class="card-img-overlay">
                                 <h4 class="card-title text-center">{{ $sticker->name }}</h4>
                             </div>
