@@ -15,7 +15,7 @@
                             <div class="col-md-12">
                                 <div class="alert alert-success text-xs-center">
                                     <p>Siparişiniz ödeme beklemektedir.</p>
-                                    <p><a href="#" class="btn btn-success"><i class="fa fa-paypal"></i> Paypal ile Ödeme</a></p>
+                                    <p><a href="{{ route("frontend.user.payment.paypal", $payment->id) }}" class="btn btn-success"><i class="fa fa-paypal"></i> Paypal ile Ödeme</a></p>
                                 </div>
                                 @if($payment->payment_type == "bank")
                                 <div class="alert alert-info text-xs-center">

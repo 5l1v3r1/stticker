@@ -50,12 +50,19 @@ class UserAddressController extends FrontendController
     }
 
     public function edit(UserAddress $address) {
+
+        if($address->user != auth()->user())
+            return redirect()->route("frontend.home.index");
+
         return view("user.address.edit", [
             "address" => $address,
         ]);
     }
 
     public function update(UserAddressEditRequest $request, UserAddress $address) {
+        if($address->user != auth()->user())
+            return redirect()->route("frontend.home.index");
+
         $address->name = $request->get("name");
         $address->city_id = $request->get("city_id") != 0 ? $request->get("city_id") : null;
         $address->town = $request->get("town");
@@ -68,6 +75,8 @@ class UserAddressController extends FrontendController
     }
 
     public function destroy(UserAddress $address) {
+        if($address->user != auth()->user())
+            return redirect()->route("frontend.home.index");
         $address->delete();
         alert()->success("Adres bilgisi silindi!");
         return redirect()->route("frontend.user.address.index");

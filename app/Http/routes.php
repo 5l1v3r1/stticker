@@ -58,6 +58,9 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::get("user/payment", ["as" => "user.payment.index", "uses" => "UserPaymentController@index"]);
             Route::get("user/payment/{order}", ["as" => "user.payment.show", "uses" => "UserPaymentController@show"]);
+            Route::get("user/payment/{order}/paypal", ["as" => "user.payment.paypal", "uses" => "UserPaymentController@paypal"]);
+            Route::get("user/payment/{order}/paypal/done", ["as" => "user.payment.paypal.done", "uses" => "UserPaymentController@paypalDone"]);
+            Route::get("user/payment/{order}/paypal/cancel", ["as" => "user.payment.paypal.cancel", "uses" => "UserPaymentController@paypalCancel"]);
 
             Route::get("logout", ["as" => "user.logout", "uses" => "UserController@logout"]);
         });

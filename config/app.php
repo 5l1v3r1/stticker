@@ -167,6 +167,7 @@ return [
         MisterPhilip\MaintenanceMode\MaintenanceModeServiceProvider::class,
         MisterPhilip\MaintenanceMode\MaintenanceCommandServiceProvider::class,
         Sofa\Eloquence\ServiceProvider::class,
+        Netshell\Paypal\PaypalServiceProvider::class,
 
     ],
 
@@ -219,6 +220,7 @@ return [
         'Settings'  => Webjektif\LaravelConfig\LaravelConfigFacade::class,
         'Cart'      => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Gravatar'  => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+        'PayPal'    => Netshell\Paypal\Facades\Paypal::class,
 
     ],
 
