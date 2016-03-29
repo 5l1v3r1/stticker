@@ -75,7 +75,11 @@
                                     <?php $size = \App\StickerSize::find($item->options->size); ?>
                                     <tr>
                                         <td class="hidden-sm-down" width="10%"><img src="{{ asset($sticker->image) }}" class="img-fluid img-thumbnail"></td>
-                                        <td>{{ $sticker->name }}</td>
+                                        <td>
+                                            <a href="{{ route("frontend.sticker.show", $sticker->slug) }}" target="_blank">
+                                                {{ $sticker->name }}
+                                            </a>
+                                        </td>
                                         <td>
                                             {{ $size->name }}
                                         </td>
