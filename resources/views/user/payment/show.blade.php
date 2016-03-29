@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="alert alert-info text-xs-center">
                                     <h3>Banka Bilgileri</h3>
-                                    <p>{{ Settings::get("bank") }}</p>
+                                    <p>{!! Settings::get("bank") !!}</p>
                                 </div>
                             </div>
                         </div>
