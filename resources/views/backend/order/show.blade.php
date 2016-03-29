@@ -1,5 +1,4 @@
 @extends("layout.page")
-
 @section("container")
     <section>
         <div class="container">
@@ -33,6 +32,7 @@
                         <thead class="thead-inverse">
                         <tr>
                             <th>Sipariş Kodu</th>
+                            <th>Sipariş Veren</th>
                             <th>Sipariş Tarihi</th>
                             <th class="text-xs-center"><i class="fa fa-try"></i></th>
                             <th class="text-xs-center"><i class="fa fa-tasks"></i></th>
@@ -41,6 +41,7 @@
                         <tbody>
                         <tr>
                             <td>{{ $order->code }}</td>
+                            <td>{{ $order->name }}</td>
                             <td>{{ $order->created_at->format("d.m.Y - H:i") }}</td>
                             <td class="text-xs-center"><i class="fa fa-try"></i> {{ number_format($order->total + $order->cargo, 2) }}</td>
                             <td class="text-xs-center">
