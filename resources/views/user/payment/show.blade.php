@@ -18,7 +18,7 @@
                                     <p><a href="{{-- route("frontend.user.payment.paypal", $payment->id) --}}" class="btn btn-success"><i class="fa fa-paypal"></i> Paypal ile Ödeme</a></p>
                                 </div>
                                 <div class="alert alert-info text-xs-center">
-                                    <h3>Banka Bilgileri</h3>
+                                    <h3>Hesap Bilgileri</h3>
                                     <p>{!! Settings::get("bank") !!}</p>
                                 </div>
                             </div>
