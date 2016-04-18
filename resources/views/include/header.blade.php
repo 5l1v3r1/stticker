@@ -14,6 +14,9 @@
                         <a class="nav-link" href="{{ route("frontend.home.index") }}"><i class="fa fa-home"></i> Anasayfa</a>
                     </div>
                     <div class="nav-item">
+                        <a class="nav-link" href="{{ route("frontend.sticker.campaign") }}"><i class="fa fa-bell"></i> Kampanyalar</a>
+                    </div>
+                    <div class="nav-item">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ route("frontend.sticker.index") }}" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cubes"></i> Sticker</a>
                         <div class="dropdown-menu">
                             @foreach(\App\StickerCategory::whereNull("parent_id")->get() as $headerCategory)

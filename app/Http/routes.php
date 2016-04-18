@@ -21,6 +21,9 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get("/", ["as" => "home.index", "uses" => "HomeController@index"]);
 
+        Route::get("kampanya", ["as" => "sticker.campaign", "uses" => "StickerController@campaign"]);
+        Route::post("kampanya", ["as" => "sticker.campaign", "uses" => "StickerController@campaignOrder"]);
+
         Route::get("sticker", ["as" => "sticker.index", "uses" => "StickerController@index"]);
         Route::get("sticker/{sticker}", ["as" => "sticker.show", "uses" => "StickerController@show"]);
         Route::get("sticker-category/{sticker_category}", ["as" => "sticker.category.show", "uses" => "StickerCategoryController@show"]);

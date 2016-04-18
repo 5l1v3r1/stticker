@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\CustomOrder;
+use App\Http\Requests\CustomOrderRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,6 +15,29 @@ class StickerController extends FrontendController
 {
     public function index() {
         return view("sticker.index");
+    }
+
+    /**
+     * @return mixed
+     */
+    public function campaign() {
+        $stickers = Sticker::where('campaign', 1)->get();
+        $code = "ID" . str_random(3);
+        return view("campaign.index", compact('code', 'stickers'));
+    }
+
+    public function campaignOrder(CustomOrderRequest $request)
+    {
+        $post = new CustomOrder;
+        $post->code = $request->get('code');
+        $post->name = $request->get('name');
+        $post->email = $request->get('email');
+        $post->phone = $request->get('phone');
+        $post->adress = $request->get('adress');
+        $post->content = $request->get('content');
+        $post->save();
+        alert()->success("Siparişiniz başarıyla gönderildi.");
+        return redirect()->route("frontend.sticker.campaign")->with(['code' => $request->get('code')]);
     }
 
     public function show(Sticker $sticker) {
