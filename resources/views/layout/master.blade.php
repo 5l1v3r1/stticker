@@ -28,6 +28,7 @@
 
 <script src="{{ asset("assets/js/vendor.js") }}"></script>
 <script src="{{ asset("assets/js/app.js") }}"></script>
+<script src="{{ asset("assets/plugins/masonary.js") }}"></script>
 @yield("scripts")
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -37,6 +38,12 @@
 
     ga('create', '{{ Settings::get("google-code") }}', 'auto');
     ga('send', 'pageview');
+</script>
+
+<script>
+    $('.grid').masonry({
+        itemSelector: '.grid-item'
+    });
 </script>
 </body>
 </html>

@@ -32,7 +32,6 @@
                         <thead class="thead-inverse">
                         <tr>
                             <th>Sipariş Kodu</th>
-                            <th>Sipariş Veren</th>
                             <th>Sipariş Tarihi</th>
                             <th class="text-xs-center"><i class="fa fa-try"></i></th>
                             <th class="text-xs-center"><i class="fa fa-tasks"></i></th>
@@ -41,7 +40,6 @@
                         <tbody>
                         <tr>
                             <td>{{ $order->code }}</td>
-                            <td>{{ $order->name }}</td>
                             <td>{{ $order->created_at->format("d.m.Y - H:i") }}</td>
                             <td class="text-xs-center"><i class="fa fa-try"></i> {{ number_format($order->total + $order->cargo, 2) }}</td>
                             <td class="text-xs-center">
@@ -59,6 +57,25 @@
                                     <span class="label label-warning">İade</span>
                                 @endif
                             </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Kişi Detayı</h3>
+
+                    <table class="table table-striped table-middle">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th width="20%">Sipariş Veren</th>
+                            <th width="20%">Telefon</th>
+                            <th>Adres</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ $order->name }}</td>
+                            <td>{{ $order->phone }}</td>
+                            <td>{{ $order->address }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -90,7 +107,7 @@
                             @else
                                 <tr>
                                     <td width="10%"><img src="{{ asset($sticker->image) }}" class="img-fluid img-thumbnail"></td>
-                                    <td>{{ $sticker->name }}</td>
+                                    <td><a href="{{ route("frontend.sticker.show", $sticker->slug) }}">{{ $sticker->name }}</a></td>
                                     <td>{{ $sticker->size }}</td>
                                     <td class="quantity">{{ $sticker->quantity }} Adet</td>
                                     <td class="text-xs-center">{{ number_format($sticker->price/$sticker->quantity, 2) }} <i class="fa fa-try"></i></td>

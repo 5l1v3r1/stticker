@@ -19,9 +19,9 @@
                         </div>
                     {!! Form::close() !!}
 
-                    <div class="row">
+                    <div class="row grid">
                         @foreach($stickers as $sticker)
-                        <div class="col-md-3">
+                        <div class="col-md-3 grid-item">
                             <a href="{{ route("frontend.sticker.show", $sticker->slug) }}" class="card card-inverse sticker">
                                 <img class="card-img-top img-fluid" src="{{ asset($sticker->image) }}" alt="{{ $sticker->name }}">
                                 <div class="card-img-overlay">
