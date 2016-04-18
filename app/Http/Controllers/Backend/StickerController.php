@@ -27,6 +27,7 @@ class StickerController extends BackendController
         $sticker->name = $request->get("name");
         $sticker->sticker_category_id = $request->get("sticker_category_id");
         $sticker->slug = $request->get("slug");
+        $sticker->campaign = $request->get("campaign");
 
         if($request->hasFile("image")){
             do {
@@ -54,6 +55,7 @@ class StickerController extends BackendController
         $sticker->name = $request->get("name");
         $sticker->sticker_category_id = $request->get("sticker_category_id");
         $sticker->slug = $request->get("slug");
+        $sticker->campaign = $request->get("campaign");
 
         if($request->hasFile("image")){
             do {

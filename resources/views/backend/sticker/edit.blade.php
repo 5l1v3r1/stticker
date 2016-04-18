@@ -44,6 +44,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        {!! Form::label("campaign", "Stokta Durumu") !!}
+                                        {!! Form::select("campaign", [0 => "Stokta Yok", 1 => "Stokta Var"] , $sticker->campaign, ["class" => "form-control form-control-lg"]) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         {!! Form::label("image", "Sticker Resmi") !!}
                                         {!! Form::file("image", ["class" => "form-control form-control-lg"]) !!}
                                     </div>

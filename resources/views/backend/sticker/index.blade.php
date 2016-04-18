@@ -15,6 +15,7 @@
                             <th>#</th>
                             <th>Sticker</th>
                             <th>Kategori</th>
+                            <th>Stok</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -24,6 +25,13 @@
                                 <td><img src="{{ asset($sticker->image) }}" class="img-responsive" width="50"></td>
                                 <td>{{ $sticker->name }}</td>
                                 <td>{{ $sticker->category->name }}</td>
+                                <td>
+                                    @if($sticker->campaign == 0)
+                                        <span class="label label-danger">Yok</span>
+                                    @else
+                                        <span class="label label-success">Var</span>
+                                    @endif
+                                </td>
                                 <td class="text-xs-right">
                                     <a href="{{ route("backend.sticker.edit", $sticker->slug) }}" class="btn btn-sm btn-info-outline"><i class="fa fa-pencil"></i> Düzenle</a>
                                     <a href="{{ route("backend.sticker.destroy", $sticker->slug) }}" class="btn btn-sm btn-danger-outline"><i class="fa fa-trash-o"></i> Sil</a>
