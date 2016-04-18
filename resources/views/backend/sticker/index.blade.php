@@ -12,6 +12,7 @@
                     <table class="table table-hover table-striped table-middle">
                         <thead class="thead-inverse">
                         <tr>
+                            <th>#</th>
                             <th>Sticker</th>
                             <th>Kategori</th>
                             <th></th>
@@ -20,6 +21,7 @@
                         <tbody>
                         @foreach($stickers as $sticker)
                             <tr>
+                                <td><img src="{{ asset($sticker->image) }}" class="img-responsive" width="50"></td>
                                 <td>{{ $sticker->name }}</td>
                                 <td>{{ $sticker->category->name }}</td>
                                 <td class="text-xs-right">
