@@ -49,7 +49,8 @@
                             </div>
                             <div class="card-block">
                                 <p class="text-center">
-                                    <b>3 - 5 </b> iş günü kargo süresi
+                                    <p>Siparişleriniz aynı gün işleme alınmaktadır ve stokta bulunan kampanyalar sayfasında yer alan sticker lar aynı gün gönderilmektedir.</p>
+                                    <p>Özel basılacak veya stokta olmayan sticker lar <strong>5 - 7</strong> gün arasında adresinize gönderilecektir.</p>
                                 </p>
                             </div>
                         </div>
