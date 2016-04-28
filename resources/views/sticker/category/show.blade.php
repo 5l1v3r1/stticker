@@ -3,7 +3,7 @@
 @section("title") {{ $category->name }} @stop
 
 @section("container")
-    <section>
+    <section class="category-list">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -19,11 +19,12 @@
                         </div>
                     {!! Form::close() !!}
 
-                    <div class="row grid">
+                    <div class="row all-sticker-list">
                         @foreach($stickers as $sticker)
-                        <div class="col-md-3 grid-item">
+                        <div class="col-md-3">
                             <a href="{{ route("frontend.sticker.show", $sticker->slug) }}" class="card card-inverse sticker">
-                                <img class="card-img-top img-fluid" src="{{ asset($sticker->image) }}" alt="{{ $sticker->name }}">
+                                <img style="display: none;" class="card-img-top img-fluid" src="{{ asset($sticker->image) }}" alt="{{ $sticker->name }}">
+                                <div class="img" style="background-image:url({{ asset($sticker->image) }});"></div>
                                 <div class="card-img-overlay">
                                     <h4 class="card-title text-center">{{ $sticker->name }}</h4>
                                 </div>

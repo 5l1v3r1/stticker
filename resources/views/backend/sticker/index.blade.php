@@ -16,6 +16,7 @@
                             <th>Sticker</th>
                             <th>Kategori</th>
                             <th>Stok</th>
+                            <th>Uzantı</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -30,6 +31,16 @@
                                         <span class="label label-danger">Yok</span>
                                     @else
                                         <span class="label label-success">Var</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <?php
+                                        $extension = pathinfo($sticker->image, PATHINFO_EXTENSION);
+                                    ?>
+                                    @if($extension == "svg" OR $extension == "ai")
+                                        {{ $extension }}
+                                    @else
+                                        <span class="label label-danger">{{ $extension }}</span>
                                     @endif
                                 </td>
                                 <td class="text-xs-right">
